@@ -7,6 +7,7 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session')
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 
 const authRouter = require('./routes/auth')
@@ -14,7 +15,10 @@ const authRouter = require('./routes/auth')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
-
+app.use(cors({
+  origin: 'https:localhost:8080',
+  // credentials: true,
+}));
 /**
  * handle static files
  */
@@ -62,7 +66,7 @@ function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { //passport feature
     return res.redirect('/')
   }
-  next()
+ return next();
 }
 
 const PORT = 3000;

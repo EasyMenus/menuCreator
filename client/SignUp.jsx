@@ -6,13 +6,13 @@ import {
   RouteComponentProps
 } from 'react-router-dom';
 
-const SignUp = () => {
+export default function SignUp() {
 
   return (
     <div>
-      Sign In page     
+      Sign Up page 
     </div>
   );
 }
 
-export default withRouter(SignUp);
+// export default SignUp;
