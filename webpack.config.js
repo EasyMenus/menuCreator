@@ -1,20 +1,23 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     mode: 'development',  //developmentm, production(ugl & min) 
     entry: ['./client/index.js'],
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: '/',
     },
     devServer:{
         host: 'localhost',
         port: 8080,
-        contentBase: path.join(__dirname, 'build'),
+        // contentBase: path.join(__dirname, 'build'),
+        filename: 'bundle.js',
         publicPath: '/',  //front
         historyApiFallback: true,
-        inline: true,
-        headers: {'Access-Control-Allow-Origin': '*'},
+        // inline: true,
+        // headers: {'Access-Control-Allow-Origin': '*'},
         proxy:{              
             
             '/':{
@@ -30,7 +33,12 @@ module.exports = {
             // }             
         },
         hot: true
-    },
+                },
+            plugins: [
+                new HtmlWebpackPlugin({
+                    template: './index.html'
+                })
+            ],
     module:{
         rules:[
           {

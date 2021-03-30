@@ -22,8 +22,11 @@ app.use(cors({
 /**
  * handle static files
  */
-app.use(express.static(path.resolve(__dirname, '../build')));
+// app.use(express.static(path.resolve(__dirname, '../build')));
 
+app.get('/*', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../index.html'))
+})
 /**
  * TODO: 
  *  -save to a session redis DB

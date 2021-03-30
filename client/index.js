@@ -15,15 +15,13 @@
 // );
 
 import React from 'react';
-import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
-  Route,
-  Redirect,
-  Link,
   Switch,
+  Route,
 } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import Cookies from 'js-cookie';
 import App from './App.jsx';
 import SignIn from './SignIn.jsx';
@@ -37,7 +35,7 @@ import SignUp from './SignUp.jsx';
 //       return Cookies.get('ssid') || window.localStorage.getItem('ssid') ? (
 //         <Component {...props} />
 //       ) : (
-//         <Redirect to="/" />
+//         <Redirect to="/signin" />
 //       );
 //     }}
 //   />
@@ -46,9 +44,9 @@ import SignUp from './SignUp.jsx';
 ReactDOM.render(
     <Router>
       <Switch>
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/" component={App} />
-        {/* <PrivateRoute exact path="/home" component={App}/> */}
+        <Route exact path="/home" component={App} />
+        <Route exact path="/" component={SignIn} />
+        {/* <PrivateRoute exact path="/" component={App}/> */}
         <Route exact path="/signup" component={SignUp} />
       </Switch>
     </Router>, 

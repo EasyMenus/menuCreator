@@ -5,9 +5,6 @@ import {
   useHistory,
   RouteComponentProps,
   BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
 } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,7 +12,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -46,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+const SignIn = (props) => {
   const classes = useStyles();
   
   const [email, setEmail] = useState('');
@@ -67,24 +63,17 @@ export default function SignIn() {
     }
 // console.log('email', email);
 // console.log('password', password);
+// console.log('props', props)
 
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log(e)
     newSession(email, password).then(data => {
       console.log('data in SignIn', data)
+      //push the path of the home screen into the property of the props obj
     })
 
   }
-
-
-
-
-
-
-
-
-
 
   return (
     <div>
@@ -92,7 +81,7 @@ export default function SignIn() {
           <CssBaseline />
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
-                {/* <LockOutlinedIcon /> */}
+                <LockOutlinedIcon />
               </Avatar>
                 <Typography component="h1" variant="h5">
                   Sign in
@@ -153,4 +142,4 @@ export default function SignIn() {
   );
 };
 
-// export default withRouter(SignIn);
+export default withRouter(SignIn);
