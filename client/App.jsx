@@ -10,8 +10,8 @@ import {
 } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Cookies from 'js-cookie';
-import SignIn from './SignIn.jsx';
-import SignUp from './SignUp.jsx';
+import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 
 const App = () => {
 

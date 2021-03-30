@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',  //developmentm, production(ugl & min) 
+    mode: 'development',  //development, production(ugl & min) 
     entry: ['./client/index.js'],
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -24,21 +24,11 @@ module.exports = {
                 target: 'http://localhost:3000',
                 secure: false,
                 changeOrigin: true
-                // pathRewrite: { '^/api': '' }
-            }
-            // '/assets/**':{
-            //     target: 'http://localhost:3000',
-            //     secure: false,
-            //     changeOrigin: true
-            // }             
+            }          
         },
-        hot: true
-                },
-            // plugins: [
-            //     new HtmlWebpackPlugin({
-            //         template: './index.html'
-            //     })
-            // ],
+        hot: true 
+    },
+
     module:{
         rules:[
           {
@@ -48,13 +38,11 @@ module.exports = {
               query:{
                 presets: ["@babel/preset-env", "@babel/preset-react"]
               }
-          }
-        //   {
-        //       test: /\.s[ac]ss$/i, //  --> /\.s?css/
-
-        //       use: ["style-loader", "css-loader", "sass-loader"]
-
-        //   }
+          },
+          {
+            test: /\.css$/,
+            use: ["style-loader", "css-loader"],
+          },
             
         ]
     },
