@@ -4,9 +4,6 @@ const passport = require('passport');
 const path = require('path');
 const db = require('./model/db_connection');
 
-
-
-
 const customFields = { 
   usernameField: 'email',
   passwordField: 'pwd' 
@@ -18,8 +15,9 @@ const customFields = {
  * @param {*} done 
  */
 const verifyCallBackLocal = async (username, password, done) => {
-  const queryStrselect = `select * from users where email = $1 and pwd = $2`;
-  db.query(queryStrselect, [username, password])
+  console.log('START OF CALLBACK')
+  const queryStrselect = `select * from users where email = $1`;
+  db.query(queryStrselect, [username])
   .then(user =>{
     bcrypt.compare(password,user.rows[0].pwd)
     .then(result =>{
@@ -38,8 +36,6 @@ const verifyCallBackLocal = async (username, password, done) => {
   })
 }
 
-
-
 /*
   Strategies
 */
@@ -49,9 +45,13 @@ passport.use(localStrategy)
 /*
   Serialize - Deserialize
 */
-passport.serializeUser((user, done) => done(null, user.email))
+passport.serializeUser((user, done) => {
+  console.log('SERIALIZE');
+  return done(null, user.email);
+})
 
 passport.deserializeUser((email, done) => {
+  console.log('deSERIALIZE');
   const queryStr = `select * from users where email = $1`
     //if user doesn't exist -> return done(null, false)
     db.query(queryStr,[email])
@@ -61,4 +61,4 @@ passport.deserializeUser((email, done) => {
     .catch(error =>{
       console.log('at getUserByEmail error: ', error)
     })
-})
+});

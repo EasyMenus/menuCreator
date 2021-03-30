@@ -4,24 +4,22 @@ const db = require('../model/db_connection');
 /**
  * Controller that inserts a new user into the user and localUsers tables.
  * 
- * TODO: Use transaction to capture queryStrUser and queryStrLocalUser
- * TODO: Registering 'locally' new Users loads all of the current IP Addresses from 
- * similarly created Users. 
  */
 const userController = {};
 
 userController.register = (req, res, next) =>{
+  console.log('at the authController....')
   const {firstname, lastname, email, pwd} = req.body
   const queryStrUser = `insert into users (firstname, lastname, email, pwd) values 
                           ($1, $2, $3, $4);`
   
-
   const saltRounds = 10
   bcrypt.hash(pwd, saltRounds)
   .then(hashedPassword =>{
     db.query(queryStrUser, [firstname, lastname, email, hashedPassword])
     .then(queryResult =>{
       console.log(queryResult.rows)
+      console.log('before NEXT of db register')
       next()
     })      
     .catch(error=>{
@@ -35,3 +33,4 @@ userController.register = (req, res, next) =>{
 }
 
 module.exports = userController;
+
