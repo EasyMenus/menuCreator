@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/tony-mtz/login#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "express": "^4.17.1",

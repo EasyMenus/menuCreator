@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
+import MenuCreator from './components/MenuCreator/MenuCreator.jsx'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
+const App = () => {
     return(
       <div>
-        HELLO FROM MAIN CONTAINER!!        
+        <div>hello</div>
+        <MenuCreator />        
       </div>
     );
-  }
 }
 
 export default App;
