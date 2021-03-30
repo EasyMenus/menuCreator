@@ -41,6 +41,8 @@ import SignUp from './SignUp.jsx';
 //   />
 // );
 
+//cookies are saved in req.sessions.passport.user
+
 ReactDOM.render(
     <Router>
       <Switch>

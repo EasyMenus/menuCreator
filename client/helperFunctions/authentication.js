@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
-const devServer = 'https://localhost:3000';
+const devServer = 'http://localhost:3000';
 
-export const newSession = (email, password) => {
+export const newSession = (email, pwd) => {
   const body = JSON.stringify({
     email,
-    password
+    pwd
   })
 
   const result = fetch(`${devServer}/auth/login`, {
@@ -23,8 +23,8 @@ export const newSession = (email, password) => {
   return result;
 }
 
-export const newUser = (firstName, lastName, email, password) => {
-  const body = JSON.stringify({ firstName, lastName, email, password })
+export const newUser = (firstName, lastName, email, pwd) => {
+  const body = JSON.stringify({ firstName, lastName, email, pwd })
   const result = fetch(`${devServer}/auth/register`, {
     method: 'POST',
     // credentials: 'include',

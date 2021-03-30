@@ -17,7 +17,7 @@ module.exports = {
         publicPath: '/',  //front
         historyApiFallback: true,
         // inline: true,
-        // headers: {'Access-Control-Allow-Origin': '*'},
+        headers: {'Access-Control-Allow-Origin': '*'},
         proxy:{              
             
             '/':{

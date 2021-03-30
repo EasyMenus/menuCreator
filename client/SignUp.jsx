@@ -98,9 +98,9 @@ const SignUp = () => {
             margin="normal"
             required
             fullWidth
-            id="firstName"
+            id="firstname"
             label="First Name"
-            name="firstName"
+            name="firstname"
             autoComplete="new-password"
             autoFocus
             onChange = {e => handleChange(e)}
@@ -110,7 +110,7 @@ const SignUp = () => {
             margin="normal"
             required
             fullWidth
-            name="lastName"
+            name="lastname"
             label="Last name"
             id="lastName"
             autoComplete="new-password"
@@ -133,10 +133,10 @@ const SignUp = () => {
             margin="normal"
             required
             fullWidth
-            name="password"
-            label="Password"
+            name="pwd"
+            label="pwd"
             type="password"
-            id="password"
+            id="pwd"
             autoComplete="current-password"
             onChange = {e => handleChange(e)}
           />

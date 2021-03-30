@@ -6,13 +6,9 @@ const bcrypt = require('bcrypt')
 
 const authController = require('../controllers/authController')
 
-router.get('/register', (req,res)=>{
-  res.render('register.ejs')
-})
-
 router.post('/register', authController.register, (req, res, next) => {
-  passport.authenticate('local', function(err, auth, info) {
-    console.log('auth', auth)
+  passport.authenticate('local', function(err, user, info) {
+    console.log('user', user)
     if (err) { 
       return next(err); 
     }
@@ -26,10 +22,6 @@ router.post('/register', authController.register, (req, res, next) => {
       return res.redirect('/profile/');
     });
   })(req, res, next);
-});
-
-router.get('/login', (req,res)=>{
-  res.render('login.ejs')
 });
 
 /*

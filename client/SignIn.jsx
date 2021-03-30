@@ -45,7 +45,7 @@ const SignIn = (props) => {
   const classes = useStyles();
   
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [pwd, setPassword] = useState('');
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -55,19 +55,19 @@ const SignIn = (props) => {
       case 'email':
         setEmail(inputValue);
         break;
-      case 'password':
+      case 'pwd':
         setPassword(inputValue);
         break;
       }
     }
 // console.log('email', email);
-// console.log('password', password);
+// console.log('pwd', pwd);
 // console.log('props', props)
 
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log(e)
-    newSession(email, password).then(data => {
+    newSession(email, pwd).then(data => {
       console.log('data in SignIn', data)
       //push the path of the home screen into the property of the props obj
     })
@@ -104,8 +104,8 @@ const SignIn = (props) => {
             margin="normal"
             required
             fullWidth
-            name="password"
-            label="Password"
+            name="pwd"
+            label="pwd"
             type="password"
             id="password"
             autoComplete="current-password"
