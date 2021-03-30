@@ -24,7 +24,7 @@ import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 import Cookies from 'js-cookie';
 import App from './App.jsx';
-import SignIn from './SignIn.jsx';
+import SignIn from 'client/pages/SignIn/SignIn.jsx';
 import SignUp from './SignUp.jsx';
 
 //cookie does not get set until user is signed up OR logged in

@@ -58,11 +58,11 @@ module.exports = {
             
         ]
     },
-    //plugins: //[
-    //     new HtmlWebpackPlugin({
-    //       template: './client/index.html',
-    //     }),
-    //   ],
+    plugins: [
+        new HtmlWebpackPlugin({
+          template: './client/index.html',
+        }),
+      ],
     resolve: {
       // Enable importing JS / JSX files without specifying their extension
       extensions: ['.js', '.jsx'],
