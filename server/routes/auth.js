@@ -4,13 +4,13 @@ const router = express.Router();
 const passport = require('passport');
 const bcrypt = require('bcrypt')
 
-const authController = require('../controllers/authController')
+const userController = require('../controllers/authController')
 
 router.get('/register', (req,res)=>{
   res.render('register.ejs')
 })
 
-router.post('/register', authController.register, (req, res, next) => {
+router.post('/register', userController.register, (req, res, next) => {
   passport.authenticate('local', function(err, user, info) {
     if (err) { 
       return next(err); 

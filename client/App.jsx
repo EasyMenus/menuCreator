@@ -3,9 +3,9 @@ import React from 'react';
 const App = () => {
 
   return (
-      <div>
-        HELLO FROM MAIN CONTAINER!!        
-      </div>
+    <div>
+      HELLO FROM MAIN CONTAINER!!        
+    </div>
   );
 }
 

@@ -6,13 +6,16 @@ import {
   RouteComponentProps
 } from 'react-router-dom';
 
-const SignIn = () => {
+const Login = () => {
 
   return (
     <div>
-      Sign In page     
+      Log In page
+      <form>
+        
+      </form>     
     </div>
   );
 };
 
-export default withRouter(SignIn);
+export default withRouter(Login);

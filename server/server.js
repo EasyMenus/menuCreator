@@ -64,14 +64,15 @@ function checkAuthenticated(req,res,next){
   if (req.isAuthenticated()){
     return next()
   }
-  res.redirect('/auth/login')
+  // res.redirect('/auth/login')
+  return next(err);
 }
 // check to see if a user is NOT authenticated
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { //passport feature
     return res.redirect('/')
   }
-  next()
+  return next();
 }
 
 
