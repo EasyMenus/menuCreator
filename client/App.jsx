@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+// import React from 'react';
+import { render } from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Link,
+  Switch,
+} from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import Cookies from 'js-cookie';
+import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+const App = () => {
 
-  render() {
-    return(
-      <div>
-        HELLO FROM MAIN CONTAINER!!        
-      </div>
-    );
-  }
+  return (
+    <div>
+      APP.JSXXXX
+    </div>
+  );
 }
 
 export default App;
