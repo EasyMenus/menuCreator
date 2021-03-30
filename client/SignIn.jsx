@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Link as RouteLink,
   withRouter,
@@ -19,7 +19,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { newSession } from './helperFunctions/authentication.js'
-import SignUp from './SignUp.jsx';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -143,3 +142,4 @@ const SignIn = (props) => {
 };
 
 export default withRouter(SignIn);
+// export default SignIn;

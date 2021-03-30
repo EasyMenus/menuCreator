@@ -34,11 +34,11 @@ module.exports = {
         },
         hot: true
                 },
-            plugins: [
-                new HtmlWebpackPlugin({
-                    template: './index.html'
-                })
-            ],
+            // plugins: [
+            //     new HtmlWebpackPlugin({
+            //         template: './index.html'
+            //     })
+            // ],
     module:{
         rules:[
           {

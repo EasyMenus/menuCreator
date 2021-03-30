@@ -14,11 +14,9 @@ const authRouter = require('./routes/auth')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser())
 app.use(express.json());
-app.use(cors({
-  origin: 'https:localhost:8080',
-  // credentials: true,
-}));
+app.use(cors());
 /**
  * handle static files
  */
