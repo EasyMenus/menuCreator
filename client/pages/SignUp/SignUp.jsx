@@ -43,29 +43,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
+const SignUp = (props) => {
   const classes = useStyles();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [pwd, setPassword] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
     let inputValue = e.target.value;
 
     switch (e.target.name) {
-      case "firstName":
+      case "firstname":
         setFirstName(inputValue);
         break;
-      case "lastName":
+      case "lastname":
         setLastName(inputValue);
         break;
       case "email":
         setEmail(inputValue);
         break;
-      case "password":
+      case "pwd":
         setPassword(inputValue);
         break;
     }
@@ -74,8 +74,11 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     // console.log(e)
-    newUser(firstName, lastName, email, password).then((data) => {
+    newUser(firstname, lastname, email, pwd).then((data) => {
       console.log("data in SignUp", data);
+      if (data === "Success") {
+        props.history.push("/");
+      }
     });
   };
 
@@ -133,7 +136,7 @@ const SignUp = () => {
               required
               fullWidth
               name='pwd'
-              label='pwd'
+              label='password'
               type='password'
               id='pwd'
               autoComplete='current-password'
