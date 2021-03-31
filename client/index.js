@@ -26,6 +26,8 @@ import Cookies from 'js-cookie';
 import App from './App.jsx';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import LandingPage from './pages/LandingPage/LandingPage';
+
 
 //cookie does not get set until user is signed up OR logged in
 // const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -48,6 +50,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/home" component={App} />
         <Route exact path="/" component={SignIn} />
+        <Route exact path="/LandingPage" component={LandingPage} />
         {/* <PrivateRoute exact path="/" component={App}/> */}
         <Route exact path="/signup" component={SignUp} />
       </Switch>
