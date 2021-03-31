@@ -61,9 +61,7 @@ const SignIn = (props) => {
         break;
     }
   };
-  // console.log('email', email);
-  // console.log('pwd', pwd);
-  // console.log('props', props)
+
 
   const handleLogin = (e) => {
     e.preventDefault();
