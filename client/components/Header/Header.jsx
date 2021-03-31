@@ -1,9 +1,12 @@
 import { urlencoded } from "body-parser";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Header.css";
 import FoodItem from "../FoodItem/FoodItem";
+import { MenuContext } from "../../providers/MenuContext";
 
 const Header = (header) => {
+  const { menu, menuHandler } = useContext(MenuContext);
+
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
   const [foodImg, setfoodImg] = useState("");
@@ -11,12 +14,23 @@ const Header = (header) => {
   const [foodItem, setFoodItem] = useState([]);
   let foodList = [];
 
-
   const newFoodItem = () => {
     let newFoodElement = (
-      <FoodItem key={`header_${foodName}`} foodName={foodName} foodDescription={foodDescription} foodImg={foodImg} foodPrice={foodPrice}/>
+      <FoodItem
+        key={`food_${foodName}`}
+        foodName={foodName}
+        foodDescription={foodDescription}
+        foodImg={foodImg}
+        foodPrice={foodPrice}
+        sectionID={`header_${header.header}`}
+      />
     );
-    return setFoodItem([...foodItem, newFoodElement]);
+    setFoodName("");
+    setFoodDescription("");
+    setFoodPrice("");
+    setFoodItem([...foodItem, newFoodElement]);
+    console.log("foodItem: ", foodItem);
+    menuHandler(foodItem);
   };
 
   const newFoodName = (e) => {
@@ -42,45 +56,63 @@ const Header = (header) => {
   return (
     <div>
       <h3>{header.header}</h3>
-      <form className="input-group mb-3">
-        
+      <div className="mb-3">
         <input
           type="text"
           id="input"
           className="form-control"
-          placeholder="New Food Item"
-          aria-label="New Food Item"
+          placeholder="Food Name"
+          aria-label="Food Name"
           aria-describedby="button-addon2"
           onChange={(e) => newFoodName(e)}
+          autoComplete="off"
+          value={foodName}
         />
-        <input
+      </div>
+      <div className="mb-3">
+        <textarea
           type="text"
           id="input"
           className="form-control"
-          placeholder="New Food Description"
-          aria-label="New Food Description"
+          placeholder="Description"
+          aria-label="Description"
           aria-describedby="button-addon2"
           onChange={(e) => newFoodDescription(e)}
-        />
+          autoComplete="off"
+          value={foodDescription}
+        ></textarea>
+      </div>
+      <div className="input-group mb-3">
+        <span className="input-group-text">$</span>
         <input
           type="text"
           id="input"
           className="form-control"
-          placeholder="New Food Price"
-          aria-label="New Food Price"
+          placeholder="Price"
+          aria-label="Price"
           aria-describedby="button-addon2"
           onChange={(e) => newFoodPrice(e)}
+          autoComplete="off"
+          value={foodPrice}
         />
-        <button
-          className="btn btn-outline-secondary"
-          type="button"
-          id="button-addon2"
-          onClick={() => newFoodItem()}
-        >
-          <i className="fas fa-plus"> </i>
-        </button>
-      </form>
-      {[foodItem]}
+        <span className="input-group-text">.00</span>
+      </div>
+      <br />
+      <button
+        className="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        onClick={() => newFoodItem()}
+      >
+        {" "}
+        <i className="fas fa-plus"> </i>
+        {"  " + "Add Food Item"}
+      </button>
+      <br />
+      <div>
+        <br />
+        {[foodItem]}
+      </div>
     </div>
   );
 };

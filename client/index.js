@@ -1,32 +1,16 @@
-// import React from 'react';
-// import { render } from 'react-dom';
-// import ReactDOM, {
-//   HashRouter as Router,
-//   Route,
-//   Redirect,
-//   Switch,
-// } from 'react-router-dom';
-
-// import App from './App.jsx';
-
-// render(   
-//         <App />,    
-//   document.getElementById('app')
-// );
-
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
-import Cookies from 'js-cookie';
-import MenuCreator from './components/MenuCreator/MenuCreator'
-import App from './App.jsx';
-import SignIn from './pages/SignIn/SignIn';
-import SignUp from './pages/SignUp/SignUp';
+import MenuProvider from "./providers/MenuContext"
+import App from "./App"
+
+ReactDOM.render(
+  <MenuProvider>
+    <App />
+  </MenuProvider>, 
+  document.getElementById('app')
+);
+
+
 
 //cookie does not get set until user is signed up OR logged in
 // const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -43,16 +27,3 @@ import SignUp from './pages/SignUp/SignUp';
 // );
 
 //cookies are saved in req.sessions.passport.user
-
-ReactDOM.render(
-    <Router>
-      <Switch>
-        <Route exact path="/home" component={App} />
-        {/* <Route exact path="/" component={SignIn} /> */}
-        <Route exact path="/" component={MenuCreator} />
-        {/* <PrivateRoute exact path="/" component={App}/> */}
-        <Route exact path="/signup" component={SignUp} />
-      </Switch>
-    </Router>, 
-  document.getElementById('app')
-);
