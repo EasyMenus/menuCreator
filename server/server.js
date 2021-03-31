@@ -23,7 +23,7 @@ app.use(cors());
 // app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.get('/*', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../index.html'))
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'))
 })
 /**
  * TODO: 

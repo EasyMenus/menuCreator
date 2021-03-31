@@ -26,30 +26,17 @@ import Cookies from 'js-cookie';
 import App from './App.jsx';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
-
-//cookie does not get set until user is signed up OR logged in
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={ (props) => {
-//       return Cookies.get('ssid') || window.localStorage.getItem('ssid') ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect to="/signin" />
-//       );
-//     }}
-//   />
-// );
+import Form from './components/NavBar/Form.jsx';
 
 //cookies are saved in req.sessions.passport.user
 
 ReactDOM.render(
     <Router>
       <Switch>
-        <Route exact path="/home" component={App} />
-        <Route exact path="/" component={SignIn} />
-        {/* <PrivateRoute exact path="/" component={App}/> */}
+        <Route exact path="/" component={App} />
+        <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/form" component={Form} />
       </Switch>
     </Router>, 
   document.getElementById('app')

@@ -116,7 +116,7 @@ const SignIn = (props) => {
               required
               fullWidth
               name='pwd'
-              label='password'
+              label='Password'
               type='password'
               id='password'
               autoComplete='current-password'

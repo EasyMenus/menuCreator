@@ -149,7 +149,7 @@ const SignUp = (props) => {
               className={classes.submit}
               onClick={(e) => handleSignUp(e)}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item xs></Grid>
