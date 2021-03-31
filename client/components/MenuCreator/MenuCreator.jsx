@@ -1,17 +1,19 @@
 import { urlencoded } from "body-parser";
 import React, { useEffect, useState } from "react";
-import "./MenuCreator.css"
-import Header from "../Header/Header"
+import "./MenuCreator.css";
+import Header from "../Header/Header";
 const axios = require("axios");
 
 const MenuCreator = () => {
-  const [userText, setUserText] = useState("")
+  const [userText, setUserText] = useState("");
   const [headers, setHeaders] = useState([]);
   let headerList = [];
 
   const newHeader = () => {
-    let newHeaderElement = <Header key={`header_${userText}`} header={userText}/>
-    return setHeaders([...headers, newHeaderElement])
+    let newHeaderElement = (
+      <Header key={`header_${userText}`} header={userText} />
+    );
+    return setHeaders([...headers, newHeaderElement]);
   };
 
   const newText = (e) => {
@@ -21,11 +23,11 @@ const MenuCreator = () => {
 
 
   return (
-    <div id='menu-creator'>
+    <div id="menu-creator">
       <form className="input-group mb-3">
         <input
           type="text"
-          id='input'
+          id="input"
           className="form-control"
           placeholder="Header Name"
           aria-label="Header Name"
@@ -36,13 +38,14 @@ const MenuCreator = () => {
           className="btn btn-outline-secondary"
           type="button"
           id="button-addon2"
-          onClick={() => newHeader()}>
+          onClick={() => newHeader()}
+        >
           <i className="fas fa-plus"></i>
-          </button>
+        </button>
       </form>
-      <br/>
+      <br />
       <h1>Menu</h1>
-      <br/>
+      <br />
       {[headers]}
     </div>
   );

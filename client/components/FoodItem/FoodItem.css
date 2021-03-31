@@ -1,10 +1,11 @@
 .food-item {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0 1vh 0 0;
 }
 
 .card {
     margin-right: 1vh;
+    width:100%
 }
