@@ -1,0 +1,10 @@
+.food-item {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0 1vh 0 0;
+}
+
+.card {
+    margin-right: 1vh;
+}

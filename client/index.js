@@ -23,6 +23,7 @@ import {
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 import Cookies from 'js-cookie';
+import MenuCreator from './components/MenuCreator/MenuCreator'
 import App from './App.jsx';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
@@ -47,7 +48,8 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/home" component={App} />
-        <Route exact path="/" component={SignIn} />
+        {/* <Route exact path="/" component={SignIn} /> */}
+        <Route exact path="/" component={MenuCreator} />
         {/* <PrivateRoute exact path="/" component={App}/> */}
         <Route exact path="/signup" component={SignUp} />
       </Switch>
