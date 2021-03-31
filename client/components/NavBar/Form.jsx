@@ -6,7 +6,7 @@ const Form = () => {
   return (
     <div>
       <NavBar />
-      made for testing purposes, sup team >:]
+      <h1>made for testing purposes, sup team >:]</h1>
     </div>
   );
 }

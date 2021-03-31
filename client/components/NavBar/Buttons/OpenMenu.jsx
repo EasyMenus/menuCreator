@@ -9,9 +9,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
-import AddIcon from "@material-ui/icons/Add";
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import { green } from "@material-ui/core/colors";
 import { getAllMenus } from "../../../helper/getAllMenus.js";
+
 
 function ProjectsDialog(props) {
   const classes = useStyles();
@@ -26,13 +28,15 @@ function ProjectsDialog(props) {
     onClose();
   };
 
+  const foodIcons = [<FastfoodIcon/>, <RestaurantMenuIcon/>, <RestaurantIcon/>];
+
   return (
     <Dialog
       onClose={handleClose}
       aria-labelledby='project-dialog-title'
       open={open}
     >
-      <DialogTitle id='project-dialog-title'>Open Menu</DialogTitle>
+      <DialogTitle id='project-dialog-title'>Select Menu</DialogTitle>
       <List>
         {menus.map((menuName, index) => (
           <ListItem
@@ -42,7 +46,7 @@ function ProjectsDialog(props) {
           >
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
-                <FastfoodIcon />
+                {foodIcons[Math.floor(Math.random() * 3)]}
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={menuName.menuname} />
