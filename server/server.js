@@ -11,6 +11,7 @@ const cors = require('cors');
 const app = express();
 
 const authRouter = require('./routes/auth')
+const menuRouter = require('./routes/menu')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +24,7 @@ app.use(cors());
 // app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.get('/*', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../index.html'))
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'))
 })
 /**
  * TODO: 
@@ -44,6 +45,7 @@ app.use(passport.session())
 
 //Router
 app.use('/auth', authRouter);
+app.use('/menus', menuRouter)
 
 //Dashboard
 app.get("/", 

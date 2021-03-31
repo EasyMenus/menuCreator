@@ -8,16 +8,17 @@ DROP TABLE IF EXISTS menu;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
-    firstname varchar NOT NULL,
-    lastname varchar NOT NULL,
+    firstName varchar NOT NULL,
+    lastName varchar NOT NULL,
     email varchar PRIMARY KEY,
     pwd varchar NOT NULL
 );
 
 CREATE TABLE menu(
   _id serial PRIMARY KEY,
-  email_fk varchar NOT NULL,
-  FOREIGN KEY (email_fk) 
+  menuName varchar NOT NULL,
+  emailFK varchar NOT NULL,
+  FOREIGN KEY (emailFK) 
     REFERENCES users(email)
 );
 
@@ -33,3 +34,11 @@ insert into users (firstName, lastName, email, pwd) values ('Lan', 'Bal','myemai
 
 
 insert into users (firstName, lastName, email, pwd) values ('user1', 'user1','user1@user1', 'hashfrombcrypt');
+
+insert into menu (_id, menuName, emailFK) values (DEFAULT, 'First Menu', 'user1@user1');
+insert into menu (_id, menuName, emailFK) values (DEFAULT, 'Second Menu', 'user1@user1');
+insert into menu (_id, menuName, emailFK) values (DEFAULT, 'Third Menu', 'user1@user1');
+
+select * from users inner join menu on emailFK = email;
+
+select menuName, _id from users inner join menu on emailFK = email where email='user1@user1';

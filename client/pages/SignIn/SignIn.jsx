@@ -1,20 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  Link as RouteLink,
-  withRouter,
-  useHistory,
-  RouteComponentProps,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Link as RouteLink, withRouter } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import RestaurantIcon from '@material-ui/icons/Restaurant';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -62,7 +54,6 @@ const SignIn = (props) => {
     }
   };
 
-
   const handleLogin = (e) => {
     e.preventDefault();
     newSession(email, pwd).then(data => {
@@ -92,7 +83,7 @@ const SignIn = (props) => {
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <RestaurantIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
             Sign in
@@ -117,7 +108,7 @@ const SignIn = (props) => {
               required
               fullWidth
               name='pwd'
-              label='password'
+              label='Password'
               type='password'
               id='password'
               autoComplete='current-password'

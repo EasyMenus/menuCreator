@@ -1,5 +1,4 @@
 import React from 'react';
-// import React from 'react';
 import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -12,12 +11,13 @@ import ReactDOM from 'react-dom';
 import Cookies from 'js-cookie';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import NavBar from './components/NavBar/NavBar.jsx'
 
 const App = () => {
 
   return (
     <div>
-      APP.JSXXXX
+      <NavBar/>
     </div>
   );
 }
