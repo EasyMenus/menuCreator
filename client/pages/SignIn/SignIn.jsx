@@ -62,7 +62,6 @@ const SignIn = (props) => {
     }
   };
 
-
   const handleLogin = (e) => {
     e.preventDefault();
     newSession(email, pwd).then(data => {
