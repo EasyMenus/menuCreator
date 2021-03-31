@@ -159,4 +159,4 @@ const SignUp = (props) => {
 };
 
 export default withRouter(SignUp);
-// export default SignUp;
+
