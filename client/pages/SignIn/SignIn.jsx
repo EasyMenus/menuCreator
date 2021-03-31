@@ -67,12 +67,26 @@ const SignIn = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // console.log(e)
-    newSession(email, pwd).then((data) => {
-      console.log("data in SignIn", data);
-      //push the path of the home screen into the property of the props obj
-    });
+    newSession(email, pwd).then(data => {
+      if (data === "Success") {
+        props.history.push("/home");
+      }
+    })
   };
+
+  const keyBindSignIn = useCallback((e) => {
+    if(e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('SignIn').click();
+    }
+  }, []);
+  
+  useEffect(() => {
+    document.addEventListener('keydown', keyBindSignIn);
+    return () => {
+      document.removeEventListener('keydown', keyBindSignIn)
+    }
+  }, []);
 
   return (
     <div>
@@ -105,7 +119,7 @@ const SignIn = (props) => {
               required
               fullWidth
               name='pwd'
-              label='pwd'
+              label='password'
               type='password'
               id='password'
               autoComplete='current-password'
@@ -113,6 +127,7 @@ const SignIn = (props) => {
             />
             <Button
               fullWidth
+              id='SignIn'
               variant='contained'
               color='primary'
               className={classes.submit}
@@ -122,9 +137,6 @@ const SignIn = (props) => {
             </Button>
             <Grid container>
               <Grid item xs>
-                {/* <Link href="/signup" variant="body2">
-                Forgot password?
-              </Link> */}
               </Grid>
               <Grid item>
                 <RouteLink to={"/signup"} variant='body2'>
