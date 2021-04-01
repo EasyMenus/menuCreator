@@ -9,9 +9,9 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
-import NewForm from './components/NavBar/NewForm';
-import ViewForm from './components/NavBar/ViewForm';
-import EditForm from './components/NavBar/EditForm';
+import NewForm from './components/NavBar/Forms/NewForm';
+import ViewForm from './components/NavBar/Forms/ViewForm';
+import EditForm from './components/NavBar/Forms/EditForm';
 // import backgroundImage from './pages/background.jpg';
 
 ReactDOM.render(

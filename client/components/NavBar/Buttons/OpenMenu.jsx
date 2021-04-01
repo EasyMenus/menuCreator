@@ -24,9 +24,9 @@ import { green } from "@material-ui/core/colors";
 import { getAllMenus } from "../../../helper/getAllMenus";
 import { viewMenu } from "../../../helper/getAllMenus";
 import { editMenu } from "../../../helper/getAllMenus";
-import EditForm from "../EditForm";
-import NewForm from "../NewForm";
-import ViewForm from "../ViewForm";
+import EditForm from "../Forms/EditForm";
+import NewForm from "../Forms/NewForm";
+import ViewForm from "../Forms/ViewForm";
 
 // function to pop up a Dialog box when user clicks open project
 function MenuDialog(props) {
@@ -37,7 +37,7 @@ function MenuDialog(props) {
   const handleClose = () => {
     onClose();
   };
-
+  console.log(props);
   // console.log('props', props);
   // const handleListItemClick = (value) => {
   // console.log("clicked", value);
@@ -72,7 +72,7 @@ function MenuDialog(props) {
   };
 
   // const handleQrCode = (e) = {
-  //send the qr code associated with the static url from VIEW
+  //send the qr code associated with the static menu url from VIEW
   // }
 
   const foodIcons = [
