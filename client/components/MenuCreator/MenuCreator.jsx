@@ -5,44 +5,27 @@ import { MenuContext } from "../../providers/MenuContext";
 
 const MenuCreator = () => {
   // global state + context_API
-  const { menuHandler, menuName, menuNameHandler, foodItems } = useContext(MenuContext);
+  const { menuHandler, menuName, menuNameHandler, foodItems } = useContext(
+    MenuContext
+  );
   const { headers, setHeaders } = useContext(MenuContext);
-  
+
   // local state
   const [userText, setUserText] = useState("");
   const [menuCreated, setMenuCreated] = useState(false);
 
-  // local updating variable for storing headers in order
-  let headerList = [];
-  // let propHeader = ''
-
   const newHeader = () => {
     let newHeaderElement = {
-      key: userText, 
-      header: userText, 
+      key: userText,
+      header: userText,
       foodItems: [],
     };
-    // let newHeaderElement = (
-    //   <Header key={`${userText}`} header={userText} />
-    // ); 
     setHeaders([...headers, newHeaderElement]);
-    // propHeader = userText; 
-    // return setUserText("");
   };
 
   useEffect(() => {
-    setUserText("")
-  }, [setHeaders])
-  // const updateHeader = (header) => {
-    
-  //   foodItems.forEach((elem) => {
-  //     if (!header.foodItems.hasOwnProperty(elem.key)) {
-  //       header.foodItems[elem][key] = elem
-  //       setHeaders([...headers, ])
-  //     }
-  //   })
-    
-  // }
+    setUserText("");
+  }, [setHeaders]);
 
   const newText = (e) => {
     e.preventDefault();
@@ -80,38 +63,38 @@ const MenuCreator = () => {
       </div>
     );
   }
-    return (
-      <div id="menu-creator">
-        <label htmlFor="form-control" className="form-label">
-          Add A New Section
-        </label>
-        <form className="input-group mb-3">
-          <input
-            type="text"
-            id="input"
-            className="form-control"
-            placeholder="Breakfast, Sides, Wine etc..."
-            aria-label="Breakfast, Sides, Wine etc..."
-            aria-describedby="button-addon2"
-            onChange={(e) => newText(e)}
-            autoComplete="off"
-            value={userText}
-          />
-          <button
-            className="btn btn-outline-secondary"
-            type="button"
-            id="button-addon2"
-            onClick={() => newHeader()}
-          >
-            <i className="fas fa-plus"></i>
-          </button>
-        </form>
-        <br />
-        <h1>{menuName}</h1>
-        <br />
-        <Header header={userText}/>
-      </div>
-    );
+  return (
+    <div id="menu-creator">
+      <label htmlFor="form-control" className="form-label">
+        Add A New Section
+      </label>
+      <form className="input-group mb-3">
+        <input
+          type="text"
+          id="input"
+          className="form-control"
+          placeholder="Breakfast, Sides, Wine etc..."
+          aria-label="Breakfast, Sides, Wine etc..."
+          aria-describedby="button-addon2"
+          onChange={(e) => newText(e)}
+          autoComplete="off"
+          value={userText}
+        />
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+          onClick={() => newHeader()}
+        >
+          <i className="fas fa-plus"></i>
+        </button>
+      </form>
+      <br />
+      <h1>{menuName}</h1>
+      <br />
+      <Header header={userText} />
+    </div>
+  );
 };
 
 export default MenuCreator;
