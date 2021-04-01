@@ -14,11 +14,10 @@ router.post("/", menuController.getAllMenus, (req, res) => {
   return res.json({menus})
 });
 
+router.post("/saveMenu", menuController.saveMenu, (req, res) => {
+  return res.json({ menus });
+});
 
 
-// router.post("/saveMenu", menuController.saveMenu, (req, res) => {
-  
-//   return res.json({menus})
-// });
 
 module.exports = router;

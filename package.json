@@ -45,7 +45,9 @@
     "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-images-upload": "^1.2.8",
+    "react-router-dom": "^5.2.0",
+    "svg-url-loader": "^7.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -59,6 +61,7 @@
     "nodemon": "^1.18.9",
     "redux-devtools-extension": "^2.13.8",
     "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^4.45.0",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.11.2",

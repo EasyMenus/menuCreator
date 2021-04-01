@@ -1,7 +1,5 @@
 const db = require("../model/db_connection");
 
-
-
 const menuController = {};
 
 menuController.getAllMenus = (req,res,next) => {
@@ -15,13 +13,13 @@ menuController.getAllMenus = (req,res,next) => {
     .then (data => {
 
       res.locals.data = data.rows;
-      console.log('getall data: ', data)
-      return next()
-    }) 
-    .catch(error => {
-      console.log(error);
-      return next(error); 
+      // console.log('getall data: ', data.rows)
+      return next();
     })
+    .catch((error) => {
+      console.log(error);
+      return next(error);
+    });
 };
 
 
@@ -51,12 +49,6 @@ menuController.getMenu = (req,res,next) => {
     })
   }
 
-
-
-// menuController.saveMenu = (req,res,next) => {
-  
-// };
-
-
+menuController.saveMenu = (req, res, next) => {};
 
 module.exports = menuController;
