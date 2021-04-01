@@ -9,7 +9,7 @@ const MenuProviders = ({ children }) => {
   const [menuName, setMenuName] = useState('')
   const [headers, setHeaders] = useState([]);
   const [foodItems, setFoodItems] = useState([]);
-  
+  const [menuCache, setMenuCache] = useState({});
 
   // final menu obj
   const menuHandler = () => {
@@ -21,10 +21,6 @@ const MenuProviders = ({ children }) => {
     });
   };
 
-  const emailHandler = (str) => {
-    setEmail(str);
-  };
-
   const menuNameHandler = (str) => {
     setMenuName(str);
   };
@@ -33,10 +29,11 @@ const MenuProviders = ({ children }) => {
     <MenuContext.Provider
       value={{
         menu, menuHandler,
-        email, emailHandler,
+        email, setEmail,
         menuName, menuNameHandler,
         headers, setHeaders, 
-        foodItems, setFoodItems
+        foodItems, setFoodItems,
+        menuCache, setMenuCache,
       }}
     >
       {children}

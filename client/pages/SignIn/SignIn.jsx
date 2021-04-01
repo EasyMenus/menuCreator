@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Link as RouteLink, withRouter } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -13,6 +13,7 @@ import Container from "@material-ui/core/Container";
 import { newSession } from "../../helper/authentication";
 import { green } from "@material-ui/core/colors";
 import "./SignIn.css";
+import { MenuContext } from '../../providers/MenuContext'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 const SignIn = (props) => {
   const classes = useStyles();
 
-  const [email, setEmail] = useState("");
+  const { email, setEmail } = useContext(MenuContext);
   const [pwd, setPassword] = useState("");
 
   const handleChange = (e) => {

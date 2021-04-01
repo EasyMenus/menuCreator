@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -6,6 +6,9 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NavBar from "./../../components/NavBar/NavBar.jsx";
+import { MenuContext } from "../../providers/MenuContext";
+import getAllMenus from "../../helper/getAllMenus"
+const devServer = 'http://localhost:3000'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
 export default function ControlledAccordions() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const { email, menuCache } = useContext(
+    MenuContext
+  );
+
+  // get all menus
+  // useEffect(() => {
+  //   if (menuCache){
+  //   console.log(menuCache)}
+  // });
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);

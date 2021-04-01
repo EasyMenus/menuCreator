@@ -53,7 +53,7 @@ menuController.getMenu = (req, res, next) => {
 menuController.saveMenu = (req, res, next) => {
   console.log(req.body)
   const body = req.body;
-  const email = 'user1'
+  const email = body.email;
   
   const queryStr = `insert into menu (_id, menuData, emailFK)
                     values (DEFAULT, $1 , $2)`;
