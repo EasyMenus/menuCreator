@@ -2,8 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import "./MenuCreator.css";
 import Header from "../Header/Header";
 import { MenuContext } from "../../providers/MenuContext";
+import { history } from "../../App.jsx";
+import NavBar from "./../NavBar/NavBar";
 
 const MenuCreator = () => {
+  // history.push('/');
+  // history.goBack();
+  // console.log('history', history)
+
   // global state + context_API
   const { menuHandler, menuName, menuNameHandler, foodItems } = useContext(
     MenuContext
@@ -39,28 +45,30 @@ const MenuCreator = () => {
 
   if (!menuCreated || menuName.length == 0) {
     return (
-      <div className="menu-name">
-        <label htmlFor="form-control" className="form-label">
-          Menu Name
-        </label>
-        <input
-          type="text"
-          id="input"
-          className="form-control"
-          placeholder="Wine and Drinks Menu"
-          aria-label="Wine and Drinks Menu"
-          aria-describedby="button-addon2"
-          onChange={(e) => newMenuName(e)}
-          autoComplete="off"
-        />
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => setMenuCreated(!menuCreated)}
-        >
-          Create
-        </button>
-      </div>
+       <div>
+        <div className='menu-name'>
+          <label htmlFor='form-control' className='form-label'>
+            Menu Name
+          </label>
+          <input
+            type='text'
+            id='input'
+            className='form-control'
+            placeholder='Wine and Drinks Menu'
+            aria-label='Wine and Drinks Menu'
+            aria-describedby='button-addon2'
+            onChange={(e) => newMenuName(e)}
+            autoComplete='off'
+          />
+          <button
+            type='button'
+            className='btn btn-primary'
+            onClick={() => setMenuCreated(!menuCreated)}
+          >
+            Create
+          </button>
+        </div>
+     </div>
     );
   }
   return (
