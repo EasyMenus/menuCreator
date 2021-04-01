@@ -23,23 +23,18 @@ menuController.getAllMenus = (req, res, next) => {
     });
 };
 
+/**
+ * Get a single menu by providing the menu _id
+ */
 menuController.getMenu = (req, res, next) => {
   // console.log("Get a specific menu");
-  const { _id } = req.body;
+  const { id } = req.params;
+  // console.log('what is the id', _id)
+  const queryStr = `select * from menu where _id = $1`;
 
-  const queryStr = `  
-    select 
-      menu.emailFK,
-      menu.menuName, 
-      ms.sectionName, 
-      fi.*
-    from menu 
-    inner join menusections ms on ms.menuID = menu._id
-    inner join fooditem fi on fi.sectionID = ms._id
-    where menu._id = $1`;
-
-  db.query(queryStr, [_id])
+  db.query(queryStr, [id])
     .then((data) => {
+      console.log('rows from data: ', data.rows)
       res.locals.data = data.rows;
       // console.log('get menu data: ', data.rows)
       return next();

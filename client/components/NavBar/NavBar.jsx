@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import OpenMenu from "./Buttons/OpenMenu";
 import { green } from "@material-ui/core/colors";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  button: {
+    textDecoration: "none",
+    // '&:hover'
+    color: "white",
+    fontFamily: "Helvetica",
+    textTransform: "uppercase",
+    fontSize: "14px",
   },
 }));
 
@@ -54,7 +63,7 @@ const NavBar = () => {
         style={{ backgroundColor: "green", borderRadius: "8px" }}
       >
         <Toolbar>
-          <Link to='/' style={{ textDecoration: "none", color: "white" }}>
+          {/* <Link to='/landing' style={{ textDecoration: "none", color: "white" }}> */}
             <IconButton
               edge='start'
               className={classes.icon}
@@ -64,25 +73,30 @@ const NavBar = () => {
             >
               <LocalDiningIcon />
             </IconButton>
-          </Link>
+          {/* </Link> */}
 
           <Typography variant='h6' className={classes.title}>
             Create a QR Code for your delicious menu!
           </Typography>
+
+
+          <Link to='/landing' className={classes.button}>
+              <HomeIcon />   
+          </Link>
 {/* 
           <Link to='/' style={{ textDecoration: "none", color: "white" }}>
             <Button color='inherit'>Home</Button>
           </Link> */}
 
-          <Link to='/menu' style={{ textDecoration: "none", color: "white" }}>
-            <Button color='inherit'>New Menu</Button>
-          </Link>
+          {/* <Link to='/menu' className={classes.button}> */}
+            <Button className={classes.button}>New Menu</Button>
+          {/* </Link> */}
 
-          <Button style={{ color: "white" }}>
+          <Button className={classes.button}>
             <OpenMenu color='inherit' />
           </Button>
           
-          <Button color='inherit' onClick={(e) => handleLogout(e)}>
+          <Button className={classes.button} onClick={(e) => handleLogout(e)}>
             Logout
           </Button>
 

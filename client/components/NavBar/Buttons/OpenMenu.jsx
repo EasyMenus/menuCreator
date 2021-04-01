@@ -8,7 +8,7 @@ import {
   useRouteMatch,
   Redirect,
 } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { lighten, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
@@ -33,54 +33,27 @@ function MenuDialog(props) {
   const [state, setState] = useState("");
   const classes = useStyles();
   const { onClose, open, menus } = props;
+  const { menuCache, setCurrentMenu, currentMenu } = useContext(MenuContext);
 
-  const handleClose = () => {
+  const handleClose = (id) => {
+    console.log(id)
+    setCurrentMenu(id)
     onClose();
   };
-  // console.log(props);
-  // console.log('props', props);
-  // const handleListItemClick = (value) => {
-  // console.log("clicked", value);
-  // helper will take menu id, send it to the backend, <-- send menuid and email from local storage
-  // the backend will retrieve that data,
-  // and will send back the data that will come from that to the front end, then parsing it,
-  // then shove it back in the form
-  // onClose();
-  // };
-
-  // const handleEdit = (value) => {
-  //   // console.log("value in handleEdit", value);
-  //   setState(value);
-  //   onClose();
-  //   // return state;
-  //   // console.log('handleEdit clicked')
-  //   // dont parse here, route the path to the retrieved menu data (EDITABLE)
-  //   // editMenu(email, menuid).then(data =>
-  //   //
-  //   //})
-  // };
-
-  // const handleView = (value) => {
-  //   // setState(value);
-  //   // console.log("value in handleView", value._id);
-  //   // // Parse in the helper function, removing input fields, only to view
-  //   // viewMenu(value._id).then((data) => {
-  //   //   setState(data);
-  //   // });
-  //   onClose();
-
-  // };
-
-  // const handleQrCode = (e) = {
-  //send the qr code associated with the static menu url from VIEW
-  // }
-
   const foodIcons = [
     <FastfoodIcon />,
     <RestaurantMenuIcon />,
     <RestaurantIcon />,
   ];
-
+  // [1] [
+  // [1]   {
+  // [1]     _id: 3,
+  // [1]     menudata: { menuName: 'Pizza', menuSubObjects: [Array] },
+  // [1]     emailfk: 'abc@abc.com'
+  // [1]   }
+  // [1] ]
+  // menuCache.map(menuObj => console.log(menuObj))
+  console.log(currentMenu)
   return (
     <Dialog
       onClose={handleClose}
@@ -89,7 +62,7 @@ function MenuDialog(props) {
     >
       <DialogTitle id='project-dialog-title'>Select Menu</DialogTitle>
       <List>
-        {menus.map((menuName, index) => (
+        {menuCache.map((menuObj, index) => (
           <ListItem button key={index}>
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
@@ -97,45 +70,33 @@ function MenuDialog(props) {
               </Avatar>
             </ListItemAvatar>
 
-            <ListItemText primary={menuName.menuname} />
-            <Button
-              onClick={() => handleClose()}
-              style={{ border: "1px solid black", marginLeft: "10px" }}
-            >
+            <ListItemText primary={menuObj['menudata']['data']['menuName']} />
+
               <Link
-                to={`/userMenu/edit/${menuName._id}`}
-                state='editTest'
-                style={{ textDecoration: "none", color: "black" }}
+                to={`/userMenu/menuID/${menuObj._id}`}
+                onClick={() => handleClose(menuObj._id)}
+                className={classes.button}
               >
                 Edit
               </Link>
-            </Button>
+         
 
-            <Button
-              onClick={() => handleClose()}
-              style={{ border: "1px solid black", marginLeft: "10px" }}
-            >
-              <Link to={`/userMenu/view/${menuName._id}`}
-                  menuItems= {`${menus}` }
-                  state='test'
-                  style= {{ textDecoration: "none", color: "black" }}
+  
+              <Link to={`/menus/menuID/${menuObj._id}`}
+              onClick={() => handleClose(menuObj._id)}
+                  className={classes.button}
               >
                 View
               </Link>
-            </Button>
+     
 
-            <Button
-              onClick={() => handleQrCode()}
-              style={{ border: "1px solid black", marginLeft: "10px" }}
-            >
               <Link
-                to={`/userMenu/qr/${menuName._id}`}
-                menuname={menuName}
-                style={{ textDecoration: "none", color: "black" }}
+                to={`/menus/menuID/${menuObj._id}`}
+                onClick={() => handleClose(menuObj._id)}
+                className={classes.button}
               >
                 QR Code
               </Link>
-            </Button>
           </ListItem>
         ))}
       </List>
@@ -158,6 +119,7 @@ export default function OpenMenu() {
     });
   };
 
+
   // const handleMenuItem = () => {
   //   viewMenu(value._id).then(data => {
   //     console.log('data back in OpenMenu', data);
@@ -176,20 +138,29 @@ export default function OpenMenu() {
       <MenuDialog
         open={open}
         onClose={handleClose}
-        menus={menus}
+        // menus={menuCache}
       />
     </div>
   );
 }
 
 const useStyles = makeStyles({
-  button: {
-    width: "55%",
-    backgroundColor: "white",
-    fontSize: "1em",
-    minWidth: "300px",
-    marginTop: "10px",
-    marginBotton: "10px",
+  button: { 
+    textDecoration: "none",
+    color: "black",
+    '&:hover': {
+      color: lighten('#000000', 0.33),
+    },
+    border: '1px solid black',
+    '&:hover': {
+      color: lighten('#000000', 0.33),
+    }, 
+    padding: '5px 10px', 
+    marginRight: '5px',
+    marginLeft: '5px', 
+    borderRadius: '6px',
+    fontFamily: "Helvetica",
+    textTransform: 'uppercase',
   },
   avatar: {
     backgroundColor: green[100],

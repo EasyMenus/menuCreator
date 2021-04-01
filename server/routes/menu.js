@@ -8,8 +8,8 @@ router.post("/saveMenu", menuController.saveMenu, (req, res) => {
   return res.json(res.locals.menus);
 });
 
-router.post("/menuID", menuController.getMenu, (req, res) => {
-  // console.log(res.locals.data)
+router.post("/menuID/:id", menuController.getMenu, (req, res) => {
+  // console.log('param id', req.params.id)
   let menu = res.locals.data
   return res.json({menu})
 });

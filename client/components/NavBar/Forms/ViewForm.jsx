@@ -8,7 +8,7 @@ const ViewForm = (props) => {
   let { id } = useParams();
   const [keys, setKey] = useState({});
   const [values, setValues] = useState([])
-  console.log(useParams());
+  // console.log(useParams());
   console.log("id", id);
   // console.log('history', props.location);
   // console.log(props.history.location.state)
