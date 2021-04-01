@@ -12,6 +12,7 @@ export const getAllMenus = () => {
   })
     .then((res) => res.json())
     .then(data => {
+      console.log('data in getAllMEnu', data)
       return data;
     })
     .catch((err) => console.log(`Error in getting all projects: ${err}`));

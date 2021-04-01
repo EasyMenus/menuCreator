@@ -11,7 +11,7 @@ const MenuCreator = () => {
   // console.log('history', history)
 
   // global state + context_API
-  const { menuHandler, menuName, menuNameHandler, foodItems } = useContext(
+  const { menuHandler, menuName, menuNameHandler, foodItems, email } = useContext(
     MenuContext
   );
   const { headers, setHeaders } = useContext(MenuContext);
@@ -44,10 +44,13 @@ const MenuCreator = () => {
   };
 
   const saveMenu = () => {
-    const body = JSON.stringify({ 
+    const body = {}
+    body.data = JSON.stringify({ 
       menuName:  menuName,
-      menuSubObjects: headers,
+      menuSubObjects: headers
      });
+    body.email = email
+    
      console.log(body)
    fetch(`${devServer}/menus/saveMenu`, {
       method: "POST",

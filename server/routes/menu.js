@@ -14,7 +14,7 @@ router.post("/menuID", menuController.getMenu, (req, res) => {
 });
 
 router.post("/", menuController.getAllMenus, (req, res) => {
-  console.log(res.locals.data)
+  // console.log(res.locals.data)
   let menus = res.locals.data
   return res.json({menus})
 });

@@ -55,7 +55,7 @@ app.get("/",
     res.sendFile(path.resolve(__dirname, "../index.html"));
 });
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'))
 })
 

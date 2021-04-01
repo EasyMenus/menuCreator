@@ -26,7 +26,7 @@ import { viewMenu } from "../../../helper/getAllMenus";
 import { editMenu } from "../../../helper/getAllMenus";
 import EditForm from "../Forms/EditForm";
 import ViewForm from "../Forms/ViewForm";
-import MenuContext from "../../../providers/MenuContext.jsx";
+import{ MenuContext } from '../../../providers/MenuContext';
 
 // function to pop up a Dialog box when user clicks open project
 function MenuDialog(props) {
@@ -100,10 +100,13 @@ function MenuDialog(props) {
 export default function OpenMenu() {
   const [open, setOpen] = useState(false);
   const [menus, setMenus] = useState([]);
+  const { menuCache, setMenuCache } = useContext(MenuContext);
+  // const [menuItems, setMenuItems] = useState([]);
 
   const handleClickOpen = () => {
     getAllMenus().then((result) => {
       if (result) {
+        // setMenuCache(result.menus);
         setMenus(result.menus);
         setOpen(true);
       }

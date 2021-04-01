@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { darken, makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import OpenMenu from "./Buttons/OpenMenu";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,8 +25,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     textDecoration: "none",
-    // '&:hover'
     color: "white",
+    '&:hover': {
+      color: darken('#FFFFFF', 0.33)
+    },
     fontFamily: "Helvetica",
     textTransform: "uppercase",
     fontSize: "14px",
@@ -58,7 +61,7 @@ const NavBar = () => {
               color='inherit'
               aria-label='menu'
             >
-              <LocalDiningIcon />
+              <HomeIcon />
             </IconButton>
           </Link>
 
