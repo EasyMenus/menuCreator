@@ -65,6 +65,10 @@ const MenuCreator = () => {
   }
   return (
     <div id="menu-creator">
+      <div id='submit-button'>
+      <button type="button" class="btn btn-success">Create</button>
+      </div>
+      <br/>
       <label htmlFor="form-control" className="form-label">
         Add A New Section
       </label>
@@ -78,8 +82,7 @@ const MenuCreator = () => {
           aria-describedby="button-addon2"
           onChange={(e) => newText(e)}
           autoComplete="off"
-          value={userText}
-        />
+          value={userText}/>
         <button
           className="btn btn-outline-secondary"
           type="button"
