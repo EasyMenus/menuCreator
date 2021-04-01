@@ -9,7 +9,7 @@ const MenuProviders = ({ children }) => {
   const [menuName, setMenuName] = useState('')
   const [headers, setHeaders] = useState([]);
   const [foodItems, setFoodItems] = useState([]);
-
+  
 
   // final menu obj
   const menuHandler = () => {

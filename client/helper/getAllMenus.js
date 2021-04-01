@@ -3,7 +3,7 @@ const devServer = "http://localhost:3000";
 export const getAllMenus = () => {
   let email = window.localStorage.getItem("email");
   const body = JSON.stringify({ email });
-  const menus = fetch(`${devServer}/menus/all`, {
+  const menus = fetch(`${devServer}/menus/`, {
     method: "POST",
     headers: {
       "content-type": "application/json",

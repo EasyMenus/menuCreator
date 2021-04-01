@@ -9,8 +9,7 @@ console.log('props', props);
 console.log('topicId', id);
   return (
     <div>
-      <NavBar />
-      <h1>ViewForm Made form testing purposes, sup team </h1>
+      <h1>View Form Made form testing purposes, sup team </h1>
       <h1>{id}</h1>
     </div>
   );
