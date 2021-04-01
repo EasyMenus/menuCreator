@@ -8,9 +8,11 @@ menuController.getAllMenus = (req, res, next) => {
   const { email } = req.body;
   console.log("body.email: ", req.body.email);
 
-  const queryStr = `select menuName, _id from users inner join menu on emailFK = email where email=$1`;
+  // const queryStr = `select menuName, _id from users inner join menu on emailFK = email where email=$1`;
+  const queryStr = `select * from menu where emailFK=$1`
   db.query(queryStr, [email])
     .then((data) => {
+      console.log('data back from menu')
       res.locals.data = data.rows;
       // console.log('getall data: ', data.rows)
       return next();
@@ -50,8 +52,22 @@ menuController.getMenu = (req, res, next) => {
 
 menuController.saveMenu = (req, res, next) => {
   console.log(req.body)
-  res.locals.menus = req.body;
-  return next();
+  const body = req.body;
+  const email = 'user1'
+  
+  const queryStr = `insert into menu (_id, menuData, emailFK)
+                    values (DEFAULT, $1 , $2)`;
+
+  db.query(queryStr, [body, email])
+    .then((data) => {
+      console.log('after menu insert', data)
+      return next();
+    })
+    .catch((error) => {
+      console.log('error inserting new menu', error);
+      return next(error);
+    });
+
 };
 
 module.exports = menuController;

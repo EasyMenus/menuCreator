@@ -3,6 +3,35 @@
   Notes: localUsers, oauthUsers, userIp are modeled as weak entities
 */
 
+
+DROP TABLE IF EXISTS menu;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users(
+    firstName varchar NOT NULL,
+    lastName varchar NOT NULL,
+    email varchar PRIMARY KEY,
+    pwd varchar NOT NULL
+);
+
+CREATE TABLE menu(
+  _id serial PRIMARY KEY,
+  menuData jsonb,
+  emailFK varchar NOT NULL,
+  FOREIGN KEY (emailFK) 
+    REFERENCES users(email)
+);
+
+
+
+DROP TABLE IF EXISTS menu;
+
+
+
+
+
+
+
 /*************************************************/
 DROP TABLE IF EXISTS fooditem;
 DROP TABLE IF EXISTS menusections;
@@ -16,9 +45,6 @@ CREATE TABLE users(
     email varchar PRIMARY KEY,
     pwd varchar NOT NULL
 );
-
-
-
 
 CREATE TABLE menu(
   _id serial PRIMARY KEY,
