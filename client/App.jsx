@@ -52,10 +52,10 @@ const App = () => {
           <Route path="/" component={NavBar} />
         <Switch>
           {/* <Route exact path="/" component={NavBar}/> */}
-          <Route exact path="/" component={SignIn} />
+          <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/menu" component={MenuCreator} />
-          <Route exact path="/landing" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/userMenu/view/:id" component={ViewForm}/>
           <Route exact path="/userMenu/edit/:id" component={EditForm}/>
           <Route exact path="/userMenu/qr/:id" component={QR}/>

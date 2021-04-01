@@ -32,15 +32,15 @@ const ViewForm = (props) => {
         //   setValues(menuItems[entry])
         // }
         // }
-       let test = data.map((menuItems, index) => {
-         console.log(menuItems[index])
-          return `
-        <h1 id = 'menuName'>${menuItems[index].menuname}</h1>
-        <h3 id='sectionName'>${menuItems[index].sectionname}</h3>
-        <h4 id='itemName'>${menuItems[index].itemname}: ${menuItems.price}</h4>
-        <h5 id='desc'>${menuItems[index].description}</h5>
-          `;
-        });
+      //  let test = data.map((menuItems, index) => {
+      //    console.log(menuItems[index])
+      //     return `
+      //   <h1 id = 'menuName'>${menuItems[index].menuname}</h1>
+      //   <h3 id='sectionName'>${menuItems[index].sectionname}</h3>
+      //   <h4 id='itemName'>${menuItems[index].itemname}: ${menuItems.price}</h4>
+      //   <h5 id='desc'>${menuItems[index].description}</h5>
+      //     `;
+      //   });
         console.log("test", test);
       })
       .catch((err) => `Error in viewMenuFetch: ${err}`);

@@ -12,7 +12,7 @@ menuController.getAllMenus = (req, res, next) => {
   db.query(queryStr, [email])
     .then((data) => {
       res.locals.data = data.rows;
-      // console.log('getall data: ', data.rows)
+      console.log('getall data: ', data.rows)
       return next();
     })
     .catch((error) => {

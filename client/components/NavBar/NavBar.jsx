@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     textDecoration: "none",
+    // '&:hover'
     color: "white",
     fontFamily: "Helvetica",
     textTransform: "uppercase",

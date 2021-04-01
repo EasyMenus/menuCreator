@@ -103,7 +103,7 @@ export default function OpenMenu() {
   const [open, setOpen] = useState(false);
   const [menus, setMenus] = useState([]);
 
-  const handleClickOpen = (value) => {
+  const handleClickOpen = () => {
     getAllMenus().then((result) => {
       if (result) {
         setMenus(result.menus);
