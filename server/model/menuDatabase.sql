@@ -19,6 +19,7 @@ CREATE TABLE users(
 
 
 
+
 CREATE TABLE menu(
   _id serial PRIMARY KEY,
   menuName varchar NOT NULL,

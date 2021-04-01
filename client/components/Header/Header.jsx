@@ -32,7 +32,7 @@ const Header = (header) => {
     setFoodName("");
     setFoodDescription("");
     setFoodPrice("");
-    console.log(header)
+    // console.log(header)
     // console.log(newFoodElement['sectionID'])
     headers.map((elem, i) => {
       // console.log("elem.key", elem.key, "header", header)

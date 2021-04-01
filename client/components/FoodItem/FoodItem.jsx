@@ -14,9 +14,8 @@ const FoodItem = (header) => {
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
     if (file) {
-      // console.log(file);
+
       const reader = new FileReader();
-      // console.log(reader);
       const { current } = uploadedImage;
       current.file = file;
       reader.onload = (e) => {

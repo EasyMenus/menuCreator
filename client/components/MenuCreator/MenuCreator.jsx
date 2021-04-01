@@ -15,7 +15,7 @@ const MenuCreator = () => {
     MenuContext
   );
   const { headers, setHeaders } = useContext(MenuContext);
-
+  const devServer = 'http://localhost:3000'
   // local state
   const [userText, setUserText] = useState("");
   const [menuCreated, setMenuCreated] = useState(false);
@@ -41,6 +41,28 @@ const MenuCreator = () => {
   const newMenuName = (e) => {
     e.preventDefault();
     menuNameHandler(e.target.value);
+  };
+
+  const saveMenu = () => {
+    const body = JSON.stringify({ 
+      menuName:  menuName,
+      menuSubObjects: headers,
+     });
+     console.log(body)
+   fetch(`${devServer}/menus/saveMenu`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("data in getAllMenus", data);
+        return data;
+      })
+      .catch((err) => console.log(`Error in getting all projects: ${err}`));
+      
   };
 
   if (!menuCreated || menuName.length == 0) {
@@ -74,7 +96,7 @@ const MenuCreator = () => {
   return (
     <div id="menu-creator">
       <div id='submit-button'>
-      <button type="button" class="btn btn-success">Create</button>
+      <button onClick={() => saveMenu()}type="button" class="btn btn-success">Create</button>
       </div>
       <br/>
       <label htmlFor="form-control" className="form-label">

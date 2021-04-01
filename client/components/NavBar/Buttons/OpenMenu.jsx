@@ -26,7 +26,7 @@ import { viewMenu } from "../../../helper/getAllMenus";
 import { editMenu } from "../../../helper/getAllMenus";
 import EditForm from "../Forms/EditForm";
 import ViewForm from "../Forms/ViewForm";
-import MenuContext from '/Users/edwardpark/menuCreator/client/providers/MenuContext.jsx';
+import MenuContext from '../../../providers/MenuContext';
 
 // function to pop up a Dialog box when user clicks open project
 function MenuDialog(props) {

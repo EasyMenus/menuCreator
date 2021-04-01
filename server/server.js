@@ -19,11 +19,9 @@ app.use(cors());
 /**
  * handle static files
  */
-// app.use(express.static(path.resolve(__dirname, '../build')));
+app.use(express.static(path.resolve(__dirname, '../build')));
 
-app.get('/*', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, './client/index.html'))
-})
+
 /**
  * TODO: 
  *  -save to a session redis DB
@@ -31,7 +29,8 @@ app.get('/*', (req, res) => {
  */
 require('./passport');
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  // secret: process.env.SESSION_SECRET,
+  secret: 'secret',
   resave:false,
   saveUninitialized:false,
   })
@@ -53,6 +52,10 @@ app.get("/",
     req.session.viewCount +=1;
     res.sendFile(path.resolve(__dirname, "../index.html"));
 });
+
+app.get('*', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'))
+})
 
 // check to see if a user is authenticated
 function checkAuthenticated(req,res,next){

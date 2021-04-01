@@ -48,6 +48,10 @@ menuController.getMenu = (req, res, next) => {
     });
 };
 
-menuController.saveMenu = (req, res, next) => {};
+menuController.saveMenu = (req, res, next) => {
+  console.log(req.body)
+  res.locals.menus = req.body;
+  return next();
+};
 
 module.exports = menuController;
