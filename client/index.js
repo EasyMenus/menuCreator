@@ -1,30 +1,42 @@
+// import React from 'react';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   useParams,
+// } from 'react-router-dom';
+// import ReactDOM from 'react-dom';
+// import App from './App.jsx';
+// import SignIn from './pages/SignIn/SignIn';
+// import SignUp from './pages/SignUp/SignUp';
+// import NewForm from './components/NavBar/Forms/NewForm';
+// import ViewForm from './components/NavBar/Forms/ViewForm';
+// import EditForm from './components/NavBar/Forms/EditForm';
+// // import backgroundImage from './pages/background.jpg';
+
+// ReactDOM.render(
+//     <Router>
+//       <Switch>
+//         <Route exact path="/home" component={App} />
+//         <Route exact path="/" component={SignIn} />
+//         <Route exact path="/signup" component={SignUp} />
+//         <Route exact path="/form" component={NewForm} />
+//         <Route exact path="/userMenu/view/:id" component={ViewForm}/>
+//         <Route exact path="/userMenu/edit/:id" component={EditForm}/>
+//       </Switch>
+//     </Router>, 
+//   document.getElementById('app')
+// );
+
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useParams,
-} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import SignIn from './pages/SignIn/SignIn';
-import SignUp from './pages/SignUp/SignUp';
-import NewForm from './components/NavBar/Forms/NewForm';
-import ViewForm from './components/NavBar/Forms/ViewForm';
-import EditForm from './components/NavBar/Forms/EditForm';
-// import backgroundImage from './pages/background.jpg';
+import MenuProvider from "./providers/MenuContext"
+import App from "./App"
 
 ReactDOM.render(
-    <Router>
-      <Switch>
-        <Route exact path="/home" component={App} />
-        <Route exact path="/" component={SignIn} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/form" component={NewForm} />
-        <Route exact path="/userMenu/view/:id" component={ViewForm}/>
-        <Route exact path="/userMenu/edit/:id" component={EditForm}/>
-      </Switch>
-    </Router>, 
+  <MenuProvider>
+    <App />
+  </MenuProvider>, 
   document.getElementById('app')
 );
 

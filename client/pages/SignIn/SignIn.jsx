@@ -71,7 +71,7 @@ const SignIn = (props) => {
     e.preventDefault();
     newSession(email, pwd).then(data => {
       if (data === "Success") {
-        props.history.push("/home");
+        props.history.push("/menu");
       }
     })
   };

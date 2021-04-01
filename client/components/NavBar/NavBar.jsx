@@ -71,7 +71,7 @@ const NavBar = () => {
             <Button color='inherit'>Home</Button>
           </Link> */}
 
-          <Link to='/form' style={{ textDecoration: "none", color: "white" }}>
+          <Link to='/menu' style={{ textDecoration: "none", color: "white" }}>
             <Button color='inherit'>New Menu</Button>
           </Link>
 
