@@ -7,10 +7,11 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { lighten, makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import { newUser } from "../../helper/authentication";
+import { green } from "@material-ui/core/colors";
 import "./SignUp.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,10 +20,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: lighten('#808080', 0.9),
+    border: '1px solid grey',
+    borderRadius: '8px',
+    padding: '25px',
+    marginTop: '22vh',
+    minWidth: '375px',
+    minHeight: '400px',
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "green",
+    backgroundColor: green[600],
+    color: green[100],
+    border: '1px solid green'
   },
   form: {
     width: "100%",
@@ -31,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: "green",
+    '&:hover': {
+      backgroundColor: lighten('#008000', 0.33), 
+    },
   },
 }));
 

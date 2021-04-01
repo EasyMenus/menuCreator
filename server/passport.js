@@ -15,7 +15,7 @@ const customFields = {
  * @param {*} done
  */
 const verifyCallBackLocal = async (username, password, done) => {
-  console.log("START OF CALLBACK");
+  // console.log("START OF CALLBACK");
   const queryStrselect = `select * from users where email = $1`;
   db.query(queryStrselect, [username])
     .then((user) => {
@@ -42,17 +42,16 @@ const verifyCallBackLocal = async (username, password, done) => {
 */
 const localStrategy = new LocalStrategy(customFields, verifyCallBackLocal);
 passport.use(localStrategy);
-
 /*
   Serialize - Deserialize
 */
 passport.serializeUser((user, done) => {
-  console.log("SERIALIZE");
+  // console.log("SERIALIZE");
   return done(null, user.email);
 });
 
 passport.deserializeUser((email, done) => {
-  console.log("deSERIALIZE");
+  // console.log("deSERIALIZE");
   const queryStr = `select * from users where email = $1`;
   //if user doesn't exist -> return done(null, false)
   db.query(queryStr, [email])

@@ -8,9 +8,10 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { lighten, makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { newSession } from "../../helper/authentication";
+import { green } from "@material-ui/core/colors";
 import "./SignIn.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,10 +20,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: lighten('#808080', 0.9),
+    border: '1px solid grey',
+    borderRadius: '8px',
+    padding: '25px',
+    marginTop: '22vh',
+    minWidth: '375px',
+    minHeight: '400px',
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "green",
+    backgroundColor: green[600],
+    color: green[100],
+    border: '1px solid green',
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -31,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: "green",
+    '&:hover': {
+      backgroundColor: lighten('#008000', 0.33), 
+    },
   },
 }));
 

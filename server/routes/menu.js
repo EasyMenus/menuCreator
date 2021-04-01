@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 const menuController = require("../controllers/menuControllers");
 
-router.post("/", menuController.getAllMenus, (req, res) => {
+router.post("/", menuController.getMenu, (req, res) => {
+
+});
+
+router.post("/all", menuController.getAllMenus, (req, res) => {
   // console.log(res.locals.data)
   let menus = res.locals.data;
   return res.json({ menus });
@@ -11,5 +15,7 @@ router.post("/", menuController.getAllMenus, (req, res) => {
 router.post("/saveMenu", menuController.saveMenu, (req, res) => {
   return res.json({ menus });
 });
+
+
 
 module.exports = router;
