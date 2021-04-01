@@ -6,22 +6,52 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NavBar from "./../../components/NavBar/NavBar.jsx";
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
+
+  majorContainer: {
+    // padding: "20px",
+    display: "flex",
+    fontSize : "50px",
+    // textAlign: "center",
+    textShadow: "5px",
+    backgroundColor: "#ebf9f2",
+    padding: "30px",
+    height: '100vh',
+
   },
+  root: {
+    marginLeft: "5%",
+    // width: "90%",
+    // height: "150%",
+    width: "60vw",
+    height: "62vh",
+    boxShadow : "10px 5px 10px #b1e7cb",
+    borderRadius : "5px",
+    border: "5px solid #73AD21",
+    backgroundColor: "#ebf9f2",
+    
+    },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: "33.33%",
-    flexShrink: 0,
+    fontSize: theme.typography.pxToRem(25),
+    flexBasis: "200%",
+    flexShrink: 10,
   },
   secondaryHeading: {
+    height: "100%",
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
 }));
 
+const styles = {
+  largeIcon: {
+    width: 60,
+    height: 60,
+  },
+
+};
 export default function ControlledAccordions() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -31,6 +61,7 @@ export default function ControlledAccordions() {
   };
 
   return (
+    <div className={classes.majorContainer}> Click To The Right To Learn More About EZ QR Menu Creator <ArrowForwardIcon style = {{ color: "darkgreen", fontSize: 100 }}/> 
     <div className={classes.root}>
       <Accordion
         expanded={expanded === "panel1"}
@@ -42,12 +73,10 @@ export default function ControlledAccordions() {
           id='panel1bh-header'
         >
           <Typography className={classes.heading}>About EZMenuQR</Typography>
-          <Typography className={classes.secondaryHeading}>
-            Learn About Our App
-          </Typography>
+          <Typography className={classes.secondaryHeading}>Learn About Our App</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography stlye ={{fontSize: '3rem'}}>
             EZ QR Menu is an open source, easy to use, menu builder aimed to
             support restaurant managers and owners. Users can build menus by
             typing in their menu title, categories, food items, and upload
@@ -68,9 +97,7 @@ export default function ControlledAccordions() {
           id='panel2bh-header'
         >
           <Typography className={classes.heading}>Getting Started</Typography>
-          <Typography className={classes.secondaryHeading}>
-            Learn How To Start Using EZMenuQR
-          </Typography>
+          <Typography className={classes.secondaryHeading}>Learn How To Start Using EZMenuQR</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -124,6 +151,7 @@ export default function ControlledAccordions() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+    </div>
     </div>
   );
 }

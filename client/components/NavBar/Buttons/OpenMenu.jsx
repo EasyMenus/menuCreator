@@ -73,7 +73,6 @@ function MenuDialog(props) {
               >
                 Edit
               </Link>
-
               <Link
                 to={`/userMenu/view/${menuName._id}`}
                 menuItems={`${menus}`}
@@ -83,7 +82,6 @@ function MenuDialog(props) {
               >
                 View
               </Link>
-
               <Link
                 to={`/userMenu/qr/${menuName._id}`}
                 state='QRTest'
