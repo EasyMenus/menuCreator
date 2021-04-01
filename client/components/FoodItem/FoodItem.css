@@ -1,0 +1,22 @@
+.food-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 1vh 0 0;
+}
+
+.card {
+    margin-right: 1vh;
+    width:100%
+}
+
+.food-item-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0vh 1vh 0vh 0vh;
+}
+
+.image-container {
+    margin: 10px;
+}
