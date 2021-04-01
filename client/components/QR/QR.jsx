@@ -6,8 +6,9 @@ const QR = () => {
 
     const [code, setCode] = useState('');
 
-    let link = encodeURI("http://www.google.com/")
-    console.log(encodeURI("http://www.google.com/"))
+    let link = encodeURI("http://www.google.com/");
+    
+    // console.log(encodeURI("http://www.google.com/"))
     let reqURI = `https://api.qrserver.com/v1/create-qr-code/?data=${link}&size=100x100`
 
   useEffect(() => {

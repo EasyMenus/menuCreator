@@ -31,6 +31,7 @@ import EditForm from './components/NavBar/Forms/EditForm';
 import MenuCreator from "./components/MenuCreator/MenuCreator";
 import NavBar from "./components/NavBar/NavBar";
 import LandingPage from './pages/LandingPage/LandingPage';
+import QR from './components/QR/QR';
 
 export const history = createBrowserHistory();
 
@@ -57,6 +58,7 @@ const App = () => {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/userMenu/view/:id" component={ViewForm}/>
           <Route exact path="/userMenu/edit/:id" component={EditForm}/>
+          <Route exact path="/userMenu/qr/:id" component={QR}/>
         </Switch>
       </Router>
     </div>

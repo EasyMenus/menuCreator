@@ -43,6 +43,7 @@ const MenuCreator = () => {
   if (!menuCreated || menuName.length == 0) {
     return (
        <div>
+         <NavBar/>
         <div className='menu-name'>
           <label htmlFor='form-control' className='form-label'>
             Menu Name
