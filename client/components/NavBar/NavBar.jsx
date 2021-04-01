@@ -44,6 +44,9 @@ const NavBar = () => {
     setAnchorEl(e.currentTarget);
   }
 
+  
+
+
   return (
     <div className={classes.root}>
       <AppBar

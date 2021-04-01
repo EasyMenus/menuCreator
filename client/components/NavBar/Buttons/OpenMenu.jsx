@@ -26,6 +26,7 @@ import { viewMenu } from "../../../helper/getAllMenus";
 import { editMenu } from "../../../helper/getAllMenus";
 import EditForm from "../Forms/EditForm";
 import ViewForm from "../Forms/ViewForm";
+import MenuContext from '/Users/edwardpark/menuCreator/client/providers/MenuContext.jsx';
 
 // function to pop up a Dialog box when user clicks open project
 function MenuDialog(props) {
@@ -36,7 +37,7 @@ function MenuDialog(props) {
   const handleClose = () => {
     onClose();
   };
-  console.log(props);
+  // console.log(props);
   // console.log('props', props);
   // const handleListItemClick = (value) => {
   // console.log("clicked", value);
@@ -47,28 +48,28 @@ function MenuDialog(props) {
   // onClose();
   // };
 
-  const handleEdit = (value) => {
-    // console.log("value in handleEdit", value);
-    setState(value);
-    onClose();
-    // return state;
-    // console.log('handleEdit clicked')
-    // dont parse here, route the path to the retrieved menu data (EDITABLE)
-    // editMenu(email, menuid).then(data =>
-    //
-    //})
-  };
-  // console.log("state", state);
+  // const handleEdit = (value) => {
+  //   // console.log("value in handleEdit", value);
+  //   setState(value);
+  //   onClose();
+  //   // return state;
+  //   // console.log('handleEdit clicked')
+  //   // dont parse here, route the path to the retrieved menu data (EDITABLE)
+  //   // editMenu(email, menuid).then(data =>
+  //   //
+  //   //})
+  // };
 
-  const handleView = (value) => {
-    setState(value);
-    console.log("value in handleView", value);
-    // Parse in the helper function, removing input fields, only to view
-    // viewMenu(email, menuid).then(data =>
-    //
-    //})
-    onClose();
-  };
+  // const handleView = (value) => {
+  //   // setState(value);
+  //   // console.log("value in handleView", value._id);
+  //   // // Parse in the helper function, removing input fields, only to view
+  //   // viewMenu(value._id).then((data) => {
+  //   //   setState(data);
+  //   // });
+  //   onClose();
+
+  // };
 
   // const handleQrCode = (e) = {
   //send the qr code associated with the static menu url from VIEW
@@ -98,12 +99,12 @@ function MenuDialog(props) {
 
             <ListItemText primary={menuName.menuname} />
             <Button
-              onClick={() => handleEdit(menuName)}
+              onClick={() => handleClose()}
               style={{ border: "1px solid black", marginLeft: "10px" }}
             >
               <Link
-                to={`/userMenu/edit/${index}`}
-                menuname={menuName}
+                to={`/userMenu/edit/${menuName._id}`}
+                state='editTest'
                 style={{ textDecoration: "none", color: "black" }}
               >
                 Edit
@@ -111,13 +112,13 @@ function MenuDialog(props) {
             </Button>
 
             <Button
-              onClick={() => handleView(menuName)}
+              onClick={() => handleClose()}
               style={{ border: "1px solid black", marginLeft: "10px" }}
             >
-              <Link
-                to={`/userMenu/view/${index}`}
-                menuname={menuName}
-                style={{ textDecoration: "none", color: "black" }}
+              <Link to={`/userMenu/view/${menuName._id}`}
+                  menuItems= {`${menus}` }
+                  state='test'
+                  style= {{ textDecoration: "none", color: "black" }}
               >
                 View
               </Link>
@@ -128,7 +129,7 @@ function MenuDialog(props) {
               style={{ border: "1px solid black", marginLeft: "10px" }}
             >
               <Link
-                to={`/userMenu/qr/${index}`}
+                to={`/userMenu/qr/${menuName._id}`}
                 menuname={menuName}
                 style={{ textDecoration: "none", color: "black" }}
               >
@@ -145,8 +146,9 @@ function MenuDialog(props) {
 export default function OpenMenu() {
   const [open, setOpen] = useState(false);
   const [menus, setMenus] = useState([]);
+  // const [menuItems, setMenuItems] = useState([]);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (value) => {
     getAllMenus().then((result) => {
       if (result) {
         setMenus(result.menus);
@@ -155,16 +157,26 @@ export default function OpenMenu() {
     });
   };
 
+  // const handleMenuItem = () => {
+  //   viewMenu(value._id).then(data => {
+  //     console.log('data back in OpenMenu', data);
+  //     setMenuItems(data);
+  //   })
+  // }
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <Button color='inherit' id='openProject' onClick={handleClickOpen}>
+      <Button color='inherit' id='openMenu' onClick={handleClickOpen}>
         Open Menu
       </Button>
-      <MenuDialog open={open} onClose={handleClose} menus={menus} />
+      <MenuDialog
+        open={open}
+        onClose={handleClose}
+        menus={menus}
+      />
     </div>
   );
 }

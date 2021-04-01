@@ -3,7 +3,7 @@ const router = express.Router();
 const menuController = require("../controllers/menuControllers");
 
 router.post("/menuID", menuController.getMenu, (req, res) => {
-  console.log(res.locals.data)
+  // console.log(res.locals.data)
   let menu = res.locals.data
   return res.json({menu})
 });

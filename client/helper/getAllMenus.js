@@ -12,7 +12,7 @@ export const getAllMenus = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("data in getAllMenus", data);
+      // console.log("data in getAllMenus", data);
       return data;
     })
     .catch((err) => console.log(`Error in getting all projects: ${err}`));
@@ -20,10 +20,10 @@ export const getAllMenus = () => {
   return menus;
 };
 
-export const viewMenu = () => {
-  let email = window.localStorage.getItem("email");
-  const body = JSON.stringify({ email, menuid });
-  const menu = fetch(`${devServer}/menus/menu`, {
+export const getMenu = (_id) => {
+  // let email = window.localStorage.getItem("email");
+  const body = JSON.stringify({ _id });
+  const menu = fetch(`${devServer}/menus/menuID`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -31,8 +31,9 @@ export const viewMenu = () => {
     body,
   })
   .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
+  .then((result) => {
+    // console.log(result);
+    return result.menu;
   })
   .catch((err) => console.log(`Error in getting menu: ${err}`))
   return menu;
@@ -42,20 +43,22 @@ export const viewMenu = () => {
     // then shove it back in the form
 };
 
-export const editMenu = () => {
-  let email = window.localStorage.getItem("email");
-  const body = JSON.stringify({ email, menuid });
-  const menu = fetch(`${devServer}/menus/menu`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body,
-  })
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => console.log(`Error in editing menu: ${err}`))
-  return menu;
-}
+// export const editMenu = (_id) => {
+//   // let email = window.localStorage.getItem("email");
+//   const body = JSON.stringify({ _id });
+//   const menu = fetch(`${devServer}/menus/menuID`, {
+//     method: "POST",
+//     headers: {
+//       "content-type": "application/json",
+//     },
+//     body,
+//   })
+//   .then((res) => res.json())
+//   .then((result) => {
+//     console.log('result in editMenu helper', result);
+//     return result.menu;
+    
+//   })
+//   .catch((err) => console.log(`Error in editing menu: ${err}`))
+//   return menu;
+// }

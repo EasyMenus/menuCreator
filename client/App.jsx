@@ -16,7 +16,7 @@
 // ) );
 // };
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../client/App.css";
 import {
   BrowserRouter as Router,
@@ -35,11 +35,20 @@ import LandingPage from './pages/LandingPage/LandingPage';
 export const history = createBrowserHistory();
 
 const App = () => {
+  const [state, setState] = useState(false);
+  console.log('state', state)
   
+  useEffect(() => {
+    setState(true)
+    return () => {
+    }
+  }, [])
+
   return (
     <div>
       <Router history={history}>
-          {window.localStorage.getItem('email') ? <Route path="/" component={NavBar} /> : ''}
+          {/* { state ? <Route path="/landing" component={NavBar} /> : '' } */}
+          <Route path="/" component={NavBar} />
         <Switch>
           {/* <Route exact path="/" component={NavBar}/> */}
           <Route exact path="/signin" component={SignIn} />
