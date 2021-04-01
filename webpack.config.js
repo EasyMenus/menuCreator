@@ -12,7 +12,7 @@ module.exports = {
     devServer:{
         host: 'localhost',
         port: 8080,
-        // contentBase: path.join(__dirname, 'build'),
+        contentBase: path.join(__dirname, 'build'),
         filename: 'bundle.js',
         publicPath: '/',  //front
         historyApiFallback: true,
