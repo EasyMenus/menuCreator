@@ -17,8 +17,8 @@ import EditForm from './components/NavBar/Forms/EditForm';
 ReactDOM.render(
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/home" component={App} />
+        <Route exact path="/" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/form" component={NewForm} />
         <Route exact path="/userMenu/view/:id" component={ViewForm}/>

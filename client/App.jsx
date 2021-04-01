@@ -8,6 +8,6 @@ const App = () => {
       <NavBar/>
     </div>
   );
-}
+};
 
 export default App;
