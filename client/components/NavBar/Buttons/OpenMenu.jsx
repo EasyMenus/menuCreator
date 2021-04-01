@@ -37,6 +37,7 @@ function MenuDialog(props) {
   const handleClose = () => {
     onClose();
   };
+  
   // const handleQrCode = (e) = {
   //send the qr code associated with the static menu url from VIEW
   // }
