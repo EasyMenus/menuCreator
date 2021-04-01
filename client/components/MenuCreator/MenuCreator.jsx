@@ -1,28 +1,48 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./MenuCreator.css";
 import Header from "../Header/Header";
 import { MenuContext } from "../../providers/MenuContext";
 
 const MenuCreator = () => {
   // global state + context_API
-  const { menuHandler, menuName, menuNameHandler } = useContext(MenuContext);
+  const { menuHandler, menuName, menuNameHandler, foodItems } = useContext(MenuContext);
   const { headers, setHeaders } = useContext(MenuContext);
-
+  
   // local state
   const [userText, setUserText] = useState("");
   const [menuCreated, setMenuCreated] = useState(false);
 
   // local updating variable for storing headers in order
   let headerList = [];
+  // let propHeader = ''
 
   const newHeader = () => {
-    let newHeaderElement = (
-      <Header key={`header_${userText}`} header={userText} />
-    );
-    setUserText("");
-    //menuHandler()
-    return setHeaders([...headers, newHeaderElement]);
+    let newHeaderElement = {
+      key: userText, 
+      header: userText, 
+      foodItems: [],
+    };
+    // let newHeaderElement = (
+    //   <Header key={`${userText}`} header={userText} />
+    // ); 
+    setHeaders([...headers, newHeaderElement]);
+    // propHeader = userText; 
+    // return setUserText("");
   };
+
+  useEffect(() => {
+    setUserText("")
+  }, [setHeaders])
+  // const updateHeader = (header) => {
+    
+  //   foodItems.forEach((elem) => {
+  //     if (!header.foodItems.hasOwnProperty(elem.key)) {
+  //       header.foodItems[elem][key] = elem
+  //       setHeaders([...headers, ])
+  //     }
+  //   })
+    
+  // }
 
   const newText = (e) => {
     e.preventDefault();
@@ -59,7 +79,7 @@ const MenuCreator = () => {
         </button>
       </div>
     );
-  } if (menuName.length > 1 && menuCreated)
+  }
     return (
       <div id="menu-creator">
         <label htmlFor="form-control" className="form-label">
@@ -89,7 +109,7 @@ const MenuCreator = () => {
         <br />
         <h1>{menuName}</h1>
         <br />
-        {[headers]}
+        <Header header={userText}/>
       </div>
     );
 };

@@ -7,6 +7,7 @@ import { MenuContext } from "../../providers/MenuContext";
 const Header = (header) => {
   const { menu, menuHandler } = useContext(MenuContext);
   const { foodItems, setFoodItems } = useContext(MenuContext);
+  const { headers, setHeaders } = useContext(MenuContext);
 
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
@@ -15,19 +16,34 @@ const Header = (header) => {
 
   let foodList = [];
 
+  useEffect(() => {
+    console.log(headers);
+  });
+
   const newFoodItem = () => {
-    let newFoodElement = {
-      key: `food_${foodName}`,
+    let newFoodElement = { 
+      key: `${foodName}`,
       foodName: foodName,
       foodDescription: foodDescription,
       foodImg: foodImg,
       foodPrice: foodPrice,
-      sectionID: `header_${header.header}`,
+      sectionID: `${header.header}`,
     };
     setFoodName("");
     setFoodDescription("");
     setFoodPrice("");
-    setFoodItems([...foodItems, newFoodElement]);
+    console.log(header)
+    // console.log(newFoodElement['sectionID'])
+    headers.map((elem, i) => {
+      // console.log("elem.key", elem.key, "header", header)
+      if (elem.key === header.header) {
+        let update = headers;
+        update[i].foodItems.push(newFoodElement)
+        // console.log(" hi ", update)
+        setHeaders(update)
+      }
+    })
+    
   };
 
   const newFoodName = (e) => {
@@ -49,11 +65,13 @@ const Header = (header) => {
     e.preventDefault();
     return setFoodPrice(e.target.value);
   };
-  
-  return (
+
+  let items = <FoodItem /> || []
+
+  return headers.map((elem, i) => (
     <div>
-      <h3>{header.header}</h3>
-      <FoodItem /> 
+      <h3>{elem.header}</h3> 
+      <FoodItem header={elem.header}/>
       <br/>
       <div><i className="fas fa-edit"></i>{`  edit/delete`}</div>
       <br/>
@@ -115,7 +133,7 @@ const Header = (header) => {
 
       </div>
     </div>
-  );
+  ));
 };
 
 export default Header;

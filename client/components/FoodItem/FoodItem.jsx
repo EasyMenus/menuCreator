@@ -5,18 +5,18 @@ import "./FoodItem.css";
 import { MenuContext } from "../../providers/MenuContext";
 import Header from '../Header/Header'
 
-const FoodItem = (foodName, foodDescription, foodImg, foodPrice) => {
+const FoodItem = (header) => {
   const { menu, menuHandler } = useContext(MenuContext);
-  const { foodItems, setFoodItems } = useContext(MenuContext);
+  const { headers, foodItems, setFoodItems } = useContext(MenuContext);
   const uploadedImage = React.useRef(null);
   const imageUploader = React.useRef(null);
   const [userText, setUserText] = useState("");
  
   let foodList = [];
 
-  useEffect(() => {
-    console.log(foodItems);
-  });
+  // useEffect(() => {
+  //   console.log(typeof foodItems, foodItems);
+  // });
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
@@ -37,16 +37,32 @@ const FoodItem = (foodName, foodDescription, foodImg, foodPrice) => {
   };
 
   const handleFoodItemDelete = (e) => {
-    let i = e.target.id;
-    setFoodItems(...foodItems.splice(i, 1))
+    let i = Number(e.target.id); 
+    console.log(e)
+    if (foodItems.length === 1) {
+      setFoodItems([])
+    } else {
+      // let foodName = foodItems[i]['key']
+      console.log(i)
+      return setFoodItems(foodItems.splice(i,1))
+    }
+   
   }
-  return (
+  let current
+  console.log(headers[0].header, "header", header.header)
+  for (let i = 0; i < headers.length; i++) {
+    if (headers[i].header === header.header) {
+      current = headers[i]
+    }
+  }
+  console.log(current)
+  if (headers[0].foodItems.length > 0) { return (
     <div>
-      {foodItems.map((elem, i) => (
+      {current.foodItems.map((elem, i) => (
     <div key={i} className="food-item">
       <div className="food-item-buttons">
-        <div id={i} onClick={(e) => handleFoodItemDelete(e)}>
-          <i className="fas fa-trash-alt"></i>
+        <div onClick={(e) => handleFoodItemDelete(e)}>
+          <i id={i} className="fas fa-trash-alt"></i>
         </div>
         <div onClick={() => imageUploader.current.click()}>
           <i className="fas fa-upload"></i>
@@ -87,7 +103,8 @@ const FoodItem = (foodName, foodDescription, foodImg, foodPrice) => {
       </div>
     </div>))}
     </div>
-  )
+  ) }
+  else return ( null )
 };
 
 export default FoodItem;
