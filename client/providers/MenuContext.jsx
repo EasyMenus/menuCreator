@@ -7,6 +7,8 @@ const MenuProviders = ({ children }) => {
   const [menu, setMenu] = useState({});
   const [email, setEmail] = useState('');
   const [menuName, setMenuName] = useState('')
+  const [headers, setHeaders] = useState([]);
+  const [foodItems, setFoodItems] = useState([]);
 
 
   // final menu obj
@@ -14,7 +16,8 @@ const MenuProviders = ({ children }) => {
     setMenu({
         menuName: menuName,
         email: email,
-        
+        headers: headers, 
+        foodItems: foodItems,
     });
   };
 
@@ -32,7 +35,8 @@ const MenuProviders = ({ children }) => {
         menu, menuHandler,
         email, emailHandler,
         menuName, menuNameHandler,
-
+        headers, setHeaders, 
+        foodItems, setFoodItems
       }}
     >
       {children}

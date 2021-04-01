@@ -6,31 +6,28 @@ import { MenuContext } from "../../providers/MenuContext";
 
 const Header = (header) => {
   const { menu, menuHandler } = useContext(MenuContext);
+  const { foodItems, setFoodItems } = useContext(MenuContext);
 
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
-  const [foodImg, setfoodImg] = useState("");
+  const [foodImg, setFoodImg] = useState("");
   const [foodPrice, setFoodPrice] = useState("");
-  const [foodItem, setFoodItem] = useState([]);
+
   let foodList = [];
 
   const newFoodItem = () => {
-    let newFoodElement = (
-      <FoodItem
-        key={`food_${foodName}`}
-        foodName={foodName}
-        foodDescription={foodDescription}
-        foodImg={foodImg}
-        foodPrice={foodPrice}
-        sectionID={`header_${header.header}`}
-      />
-    );
+    let newFoodElement = {
+      key: `food_${foodName}`,
+      foodName: foodName,
+      foodDescription: foodDescription,
+      foodImg: foodImg,
+      foodPrice: foodPrice,
+      sectionID: `header_${header.header}`,
+    };
     setFoodName("");
     setFoodDescription("");
     setFoodPrice("");
-    setFoodItem([...foodItem, newFoodElement]);
-    console.log("foodItem: ", foodItem);
-    menuHandler(foodItem);
+    setFoodItems([...foodItems, newFoodElement]);
   };
 
   const newFoodName = (e) => {
@@ -52,17 +49,21 @@ const Header = (header) => {
     e.preventDefault();
     return setFoodPrice(e.target.value);
   };
-
+  
   return (
     <div>
       <h3>{header.header}</h3>
+      <FoodItem /> 
+      <br/>
+      <div><i className="fas fa-edit"></i>{`  edit/delete`}</div>
+      <br/>
       <div className="mb-3">
         <input
           type="text"
           id="input"
           className="form-control"
-          placeholder="Food Name"
-          aria-label="Food Name"
+          placeholder="Entreé / Item Name"
+          aria-label="Entreé / Item Name"
           aria-describedby="button-addon2"
           onChange={(e) => newFoodName(e)}
           autoComplete="off"
@@ -111,7 +112,7 @@ const Header = (header) => {
       <br />
       <div>
         <br />
-        {[foodItem]}
+
       </div>
     </div>
   );
