@@ -56,7 +56,9 @@ CREATE TABLE fooditem(
   Sample queries
 */
 
-insert into menu (_id, menuName, emailFK) values (DEFAULT, 'First Menu', 'user1@user1');
+insert into menu (_id, menuName, emailFK) values (DEFAULT, 'First Menu', 'user1');
+
+insert into menu (_id, menuName, emailFK) values (DEFAULT, 'Second Menu', 'user1');
 
 insert into menusections(_id, menuID, sectionName) values (DEFAULT, 1, 'Bfast');
 insert into menusections(_id, menuID, sectionName) values (DEFAULT, 1, 'Wings');
@@ -83,11 +85,11 @@ insert
  select 
       menu.menuName, 
       ms.sectionName, 
-      fi.*,
+      fi.*
     from menu 
     inner join menusections ms on ms.menuID = menu._id
     inner join fooditem fi on fi.sectionID = ms._id
-    where menu._id = 1`
+    where menu._id = 1
 
 
 insert into users (firstName, lastName, email, pwd) values ('Lan', 'Bal','myemail@gmail.com');
