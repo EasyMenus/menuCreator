@@ -29,6 +29,7 @@ menuController.getMenu = (req,res,next) => {
 
   const queryStr = `  
     select 
+      menu.emailFK,
       menu.menuName, 
       ms.sectionName, 
       fi.*

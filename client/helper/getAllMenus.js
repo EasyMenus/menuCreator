@@ -12,10 +12,11 @@ export const getAllMenus = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      // console.log("data in getAllMenus", data);
+      console.log("data in getAllMenus", data);
       return data;
     })
     .catch((err) => console.log(`Error in getting all projects: ${err}`));
+    console.log(menus)
   return menus;
 };
 
