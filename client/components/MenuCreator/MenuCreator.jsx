@@ -99,6 +99,8 @@ const MenuCreator = () => {
     );
   }
   return (
+    <div>
+      <NavBar/>
     <div id="menu-creator">
       <div id='submit-button'>
       <button onClick={() => saveMenu()}type="button" class="btn btn-success">Create</button>
@@ -131,6 +133,7 @@ const MenuCreator = () => {
       <h1>{menuName}</h1>
       <br />
       <Header header={userText} />
+    </div>
     </div>
   );
 };
