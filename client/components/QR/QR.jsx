@@ -1,5 +1,5 @@
 import { urlencoded } from "body-parser";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 const axios = require("axios");
 import "./QR.css"
 import { MenuContext } from "../../providers/MenuContext";

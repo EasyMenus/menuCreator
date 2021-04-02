@@ -50,6 +50,7 @@ const App = () => {
     <div>
       <Router history={history}>
           { state ? <Route path="/landing" component={NavBar} /> : '' }
+          <Route path="/menus" component={NavBar} />
           {/* <Route path="/" component={NavBar} /> */}
         <Switch>
           {/* <Route exact path="/" component={NavBar}/> */}

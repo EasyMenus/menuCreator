@@ -57,7 +57,7 @@ const MenuView = () => {
   console.log(currentMenuData);
   if (Object.keys(currentMenuData).length > 0) {
     return (
-      <div>
+      <div className='food-view'>
         <br />
         <h1>{currentMenuData.menuName}</h1>
         {currentMenuData.menuSubObjects.map((header) => (
