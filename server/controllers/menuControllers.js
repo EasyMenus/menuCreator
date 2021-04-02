@@ -14,7 +14,7 @@ menuController.getAllMenus = (req, res, next) => {
     .then((data) => {
       console.log('data back from menu')
       res.locals.data = data.rows;
-      // console.log('getall data: ', data.rows)
+      console.log('getall data: ', data.rows)
       return next();
     })
     .catch((error) => {

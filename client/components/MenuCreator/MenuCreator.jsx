@@ -6,10 +6,6 @@ import { history } from "../../App.jsx";
 import NavBar from "./../NavBar/NavBar";
 
 const MenuCreator = () => {
-  // history.push('/');
-  // history.goBack();
-  // console.log('history', history)
-
   // global state + context_API
   const { menuHandler, menuName, menuNameHandler, foodItems, email } = useContext(
     MenuContext
@@ -72,6 +68,7 @@ const MenuCreator = () => {
   if (!menuCreated || menuName.length == 0) {
     return (
        <div>
+         <NavBar/>
         <div className='menu-name'>
           <label htmlFor='form-control' className='form-label'>
             Menu Name
@@ -89,6 +86,7 @@ const MenuCreator = () => {
           <button
             type='button'
             className='btn btn-primary'
+            style={{marginTop: '10px'}}
             onClick={() => setMenuCreated(!menuCreated)}
           >
             Create
@@ -98,6 +96,8 @@ const MenuCreator = () => {
     );
   }
   return (
+    <div>
+      <NavBar/>
     <div id="menu-creator">
       <div id='submit-button'>
       <button onClick={() => saveMenu()}type="button" class="btn btn-success">Create</button>
@@ -130,6 +130,7 @@ const MenuCreator = () => {
       <h1>{menuName}</h1>
       <br />
       <Header header={userText} />
+    </div>
     </div>
   );
 };

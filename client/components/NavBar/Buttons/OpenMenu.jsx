@@ -8,7 +8,7 @@ import {
   useRouteMatch,
   Redirect,
 } from "react-router-dom";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import { darken, lighten, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
@@ -46,14 +46,7 @@ function MenuDialog(props) {
     <RestaurantMenuIcon />,
     <RestaurantIcon />,
   ];
-  // [1] [
-  // [1]   {
-  // [1]     _id: 3,
-  // [1]     menudata: { menuName: 'Pizza', menuSubObjects: [Array] },
-  // [1]     emailfk: 'abc@abc.com'
-  // [1]   }
-  // [1] ]
-  // menuCache.map(menuObj => console.log(menuObj))
+
   console.log(currentMenu)
   return (
     <Dialog
@@ -77,11 +70,10 @@ function MenuDialog(props) {
                 to={`/userMenu/menuID/${menuObj._id}`}
                 onClick={() => handleClose(menuObj._id)}
                 className={classes.button}
+                style={{textDecoration: 'none'}}
               >
                 Edit
               </Link>
-         
-
   
               <Link to={`/menus/menuID/${menuObj._id}`}
               onClick={() => handleClose(menuObj._id)}
@@ -108,38 +100,32 @@ function MenuDialog(props) {
 export default function OpenMenu() {
   const [open, setOpen] = useState(false);
   const [menus, setMenus] = useState([]);
+  const classes = useStyles();
   const { menuCache, setMenuCache } = useContext(MenuContext);
   // const [menuItems, setMenuItems] = useState([]);
 
-  const handleClickOpen = (value) => {
+  const handleClickOpen = () => {
     getAllMenus().then((result) => {
       if (result) {
         setMenuCache(result.menus);
+        // setMenus(result.menus);
         setOpen(true);
       }
     });
   };
 
-
-  // const handleMenuItem = () => {
-  //   viewMenu(value._id).then(data => {
-  //     console.log('data back in OpenMenu', data);
-  //     setMenuItems(data);
-  //   })
-  // }
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <Button color='inherit' id='openMenu' onClick={handleClickOpen}>
+      <Button className={classes.openMenu} id='openMenu' onClick={handleClickOpen}>
         Open Menu
       </Button>
       <MenuDialog
         open={open}
         onClose={handleClose}
-        // menus={menuCache}
       />
     </div>
   );
@@ -148,24 +134,35 @@ export default function OpenMenu() {
 const useStyles = makeStyles({
   button: { 
     textDecoration: "none",
-    color: "black",
-    '&:hover': {
-      color: lighten('#000000', 0.33),
-    },
-    border: '1px solid black',
-    '&:hover': {
-      color: lighten('#000000', 0.33),
-    }, 
+    color: "#112d4e",
+    border: '1px solid #3f72af',
     padding: '5px 10px', 
     marginRight: '5px',
     marginLeft: '5px', 
     borderRadius: '6px',
     fontFamily: "Helvetica",
     textTransform: 'uppercase',
+    backgroundColor: '#dbe2ef',
+    '&:hover': {
+      backgroundColor: darken('#dbe2ef', 0.13)
+    },
+    boxShadow: '1.3px 1.4px 2px #112d4e'
   },
   avatar: {
-    backgroundColor: green[100],
-    color: green[600],
-    border: "1px solid green",
+    backgroundColor: '#dbe2ef',
+    color: '#3f72af',
+    border: "1px solid #112d4e",
+  },
+  openMenu: {
+    '&:hover': {
+      backgroundColor: lighten("#3f72af", 0.2),
+      color: darken('#f9f7f7', 0.2)
+    },
+    border: `1px solid ${lighten('#112d4e', '0.5')}`,
+    marginRight: '8px',
+    borderRadius: '6px',
+    color: '#f9f7f7',
+    backgroundColor: lighten('#3f72af', 0.3),
+    boxShadow: '1.3px 1.4px 2px #112d4e'
   },
 });

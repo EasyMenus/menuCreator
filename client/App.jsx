@@ -49,8 +49,8 @@ const App = () => {
   return (
     <div>
       <Router history={history}>
-          {/* { state ? <Route path="/landing" component={NavBar} /> : '' } */}
-          <Route path="/" component={NavBar} />
+          { state ? <Route path="/landing" component={NavBar} /> : '' }
+          {/* <Route path="/" component={NavBar} /> */}
         <Switch>
           {/* <Route exact path="/" component={NavBar}/> */}
           <Route exact path="/" component={SignIn} />
