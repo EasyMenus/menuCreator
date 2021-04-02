@@ -6,10 +6,6 @@ import { history } from "../../App.jsx";
 import NavBar from "./../NavBar/NavBar";
 
 const MenuCreator = () => {
-  // history.push('/');
-  // history.goBack();
-  // console.log('history', history)
-
   // global state + context_API
   const { menuHandler, menuName, menuNameHandler, foodItems, email } = useContext(
     MenuContext
@@ -90,6 +86,7 @@ const MenuCreator = () => {
           <button
             type='button'
             className='btn btn-primary'
+            style={{marginTop: '10px'}}
             onClick={() => setMenuCreated(!menuCreated)}
           >
             Create
