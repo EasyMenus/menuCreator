@@ -8,7 +8,7 @@ import {
   useRouteMatch,
   Redirect,
 } from "react-router-dom";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import { darken, lighten, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
@@ -33,21 +33,20 @@ function MenuDialog(props) {
   const [state, setState] = useState("");
   const classes = useStyles();
   const { onClose, open, menus } = props;
-
-  const handleClose = () => {
+  const { menuCache, setCurrentMenu, currentMenu } = useContext(MenuContext);
+  
+  const handleClose = (id) => {
+    // console.log(id)
+    setCurrentMenu(id)
     onClose();
   };
-
-  // const handleQrCode = (e) = {
-  //send the qr code associated with the static menu url from VIEW
-  // }
-
   const foodIcons = [
     <FastfoodIcon />,
     <RestaurantMenuIcon />,
     <RestaurantIcon />,
   ];
 
+  console.log(currentMenu)
   return (
     <Dialog
       onClose={handleClose}
@@ -56,7 +55,7 @@ function MenuDialog(props) {
     >
       <DialogTitle id='project-dialog-title'>Select Menu</DialogTitle>
       <List>
-        {menus.map((menuName, index) => (
+        {menuCache.map((menuObj, index) => (
           <ListItem button key={index}>
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
@@ -64,28 +63,28 @@ function MenuDialog(props) {
               </Avatar>
             </ListItemAvatar>
 
-            <ListItemText primary={menuName.menuname} />
+            <ListItemText primary={menuObj['menudata']['data']['menuName']} />
+
               <Link
-                to={`/userMenu/edit/${menuName._id}`}
-                state='editTest'
-                onClick={() => handleClose()}
+                to={`/userMenu/menuID/${menuObj._id}`}
+                onClick={() => handleClose(menuObj._id)}
                 className={classes.button}
+                style={{textDecoration: 'none'}}
               >
                 Edit
               </Link>
-              <Link
-                to={`/userMenu/view/${menuName._id}`}
-                menuItems={`${menus}`}
-                state='test'
-                onClick={() => handleClose()}
-                className={classes.button}
+  
+              <Link to={`/menus/menuID/${menuObj._id}`}
+              onClick={() => handleClose(menuObj._id)}
+                  className={classes.button}
               >
                 View
               </Link>
+     
+
               <Link
-                to={`/userMenu/qr/${menuName._id}`}
-                state='QRTest'
-                onClick={() => handleQrCode()}
+                to={`/menus/menuID/${menuObj._id}`}
+                onClick={() => handleClose(menuObj._id)}
                 className={classes.button}
               >
                 QR Code
@@ -100,14 +99,15 @@ function MenuDialog(props) {
 export default function OpenMenu() {
   const [open, setOpen] = useState(false);
   const [menus, setMenus] = useState([]);
+  const classes = useStyles();
   const { menuCache, setMenuCache } = useContext(MenuContext);
   // const [menuItems, setMenuItems] = useState([]);
 
   const handleClickOpen = () => {
     getAllMenus().then((result) => {
       if (result) {
-        // setMenuCache(result.menus);
-        setMenus(result.menus);
+        setMenuCache(result.menus);
+        // setMenus(result.menus);
         setOpen(true);
       }
     });
@@ -119,35 +119,49 @@ export default function OpenMenu() {
 
   return (
     <div>
-      <Button color='inherit' id='openMenu' onClick={handleClickOpen}>
+      <Button className={classes.openMenu} id='openMenu' onClick={handleClickOpen}>
         Open Menu
       </Button>
-      <MenuDialog open={open} onClose={handleClose} menus={menus} />
+      <MenuDialog
+        open={open}
+        onClose={handleClose}
+      />
     </div>
   );
 }
 
 const useStyles = makeStyles({
-  avatar: {
-    backgroundColor: green[100],
-    color: green[600],
-    border: "1px solid green",
-  },
   button: { 
     textDecoration: "none",
-    color: "black",
-    '&:hover': {
-      color: lighten('#000000', 0.33),
-    },
-    border: '1px solid black',
-    '&:hover': {
-      color: lighten('#000000', 0.33),
-    }, 
+    color: "#112d4e",
+    border: '1px solid #3f72af',
     padding: '5px 10px', 
     marginRight: '5px',
     marginLeft: '5px', 
     borderRadius: '6px',
     fontFamily: "Helvetica",
     textTransform: 'uppercase',
+    backgroundColor: '#dbe2ef',
+    '&:hover': {
+      backgroundColor: darken('#dbe2ef', 0.13)
+    },
+    boxShadow: '1.3px 1.4px 2px #112d4e'
+  },
+  avatar: {
+    backgroundColor: '#dbe2ef',
+    color: '#3f72af',
+    border: "1px solid #112d4e",
+  },
+  openMenu: {
+    '&:hover': {
+      backgroundColor: lighten("#3f72af", 0.2),
+      color: darken('#f9f7f7', 0.2)
+    },
+    border: `1px solid ${lighten('#112d4e', '0.5')}`,
+    marginRight: '8px',
+    borderRadius: '6px',
+    color: '#f9f7f7',
+    backgroundColor: lighten('#3f72af', 0.3),
+    boxShadow: '1.3px 1.4px 2px #112d4e'
   },
 });

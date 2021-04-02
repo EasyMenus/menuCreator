@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { lighten, makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -16,36 +16,43 @@ const useStyles = makeStyles((theme) => ({
   majorContainer: {
     // padding: "20px",
     display: "flex",
-    fontSize : "50px",
+    fontSize : "3rem",
     // textAlign: "center",
     textShadow: "5px",
-    backgroundColor: "#ebf9f2",
+    backgroundColor: '#f9f7f7',
     padding: "30px",
     height: '100vh',
+    width: '100',
 
   },
   root: {
-    marginLeft: "5%",
+    textAlign: 'center',
+    // left: '50',
     // width: "90%",
     // height: "150%",
-    width: "60vw",
-    height: "62vh",
-    boxShadow : "10px 5px 10px #b1e7cb",
+    width: "100%",
+    // height: "62vh",
+    // boxShadow : "10px 5px 10px #b1e7cb",
     borderRadius : "5px",
-    border: "5px solid #73AD21",
-    backgroundColor: "#ebf9f2",
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // border: "3px solid #73AD21",
+    backgroundColor: "#f9f7f7",
     
     },
   heading: {
     fontSize: theme.typography.pxToRem(25),
     flexBasis: "200%",
     flexShrink: 10,
+    textAlign: 'left',
   },
   secondaryHeading: {
     height: "100%",
+    textAlign: 'right',
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  
 }));
 
 const styles = {
@@ -73,8 +80,10 @@ export default function ControlledAccordions() {
   };
 
   return (
-    <div className={classes.majorContainer}> Click To The Right To Learn More About EZ QR Menu Creator <ArrowForwardIcon style = {{ color: "darkgreen", fontSize: 100 }}/> 
+    <div className={classes.majorContainer}> 
     <div className={classes.root}>
+      <h1>Directions</h1>
+      <br/>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -84,11 +93,11 @@ export default function ControlledAccordions() {
           aria-controls='panel1bh-content'
           id='panel1bh-header'
         >
-          <Typography className={classes.heading}>About EZMenuQR</Typography>
+          <Typography className={classes.heading}>About Easy MenuQR</Typography>
           <Typography className={classes.secondaryHeading}>Learn About Our App</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography stlye ={{fontSize: '3rem'}}>
+          <Typography style ={{fontSize: '1.25rem'}}>
             EZ QR Menu is an open source, easy to use, menu builder aimed to
             support restaurant managers and owners. Users can build menus by
             typing in their menu title, categories, food items, and upload
@@ -112,7 +121,7 @@ export default function ControlledAccordions() {
           <Typography className={classes.secondaryHeading}>Learn How To Start Using EZMenuQR</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography style ={{fontSize: '1.25rem'}}>
             Login with your email and password, then click on the menu you would
             like to edit on the navigation bar. If you want to create a new menu
             click on the new menu button. Also on this page you can access your
@@ -135,7 +144,7 @@ export default function ControlledAccordions() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography style ={{fontSize: '1.25rem'}}>
             You can use add a new category or a new food item by clicking the
             plus button. You can add text or an image to a new food item
             alongside the price of the food item.
@@ -157,8 +166,8 @@ export default function ControlledAccordions() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            After you are done editing your menu click save and a qr code will
+          <Typography style ={{fontSize: '1.25rem'}}>
+            After you are done editing your menu click save and a QR code will
             appear.
           </Typography>
         </AccordionDetails>

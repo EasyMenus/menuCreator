@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { darken, makeStyles } from "@material-ui/core/styles";
+import { darken, lighten, makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import OpenMenu from "./Buttons/OpenMenu";
 import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    borderRadius: "8px",
-    boxShadow: "6px 5px 5px #a8a8a8",
+    // borderRadius: "8px",
+    // boxShadow: "6px 5px 5px #a8a8a8",
   },
   icon: {
     marginRight: theme.spacing(2),
@@ -25,13 +24,19 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     textDecoration: "none",
-    color: "white",
+    border: `1px solid ${lighten('#112d4e', '0.5')}`,
+    borderRadius: '6px',
     '&:hover': {
-      color: darken('#FFFFFF', 0.33)
+      backgroundColor: lighten("#3f72af", 0.2),
+      color: darken('#f9f7f7', 0.2)
     },
+    color: "#f9f7f7",
     fontFamily: "Helvetica",
     textTransform: "uppercase",
     fontSize: "14px",
+    marginRight: '8px',
+    backgroundColor: lighten('#3f72af', 0.3),
+    boxShadow: '1.3px 1.4px 2px #112d4e'
   },
 }));
 
@@ -51,10 +56,10 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar
         position='static'
-        style={{ backgroundColor: "green", borderRadius: "8px" }}
+        style={{ backgroundColor: "#3f72af", border: `1px solid ${darken('#112d4e', '0.7')}`  }}
       >
         <Toolbar>
-          <Link to='/' style={{ textDecoration: "none", color: "white" }}>
+          <Link to='/landing' style={{ textDecoration: "none", color: "white" }}>
             <IconButton
               edge='start'
               className={classes.icon}
@@ -69,13 +74,13 @@ const NavBar = () => {
             Create a QR Code for your delicious menu!
           </Typography>
 
-          <Link to='/menu' className={classes.button}>
+          <Button className={classes.button}>
+          <Link to='/menu' style={{textDecoration: 'none', color: '#f9f7f7', "&:hover": `${darken('#3f72af', 0.3)}` }}>
             New Menu
           </Link>
-
-          <Button className={classes.button}>
-            <OpenMenu color='inherit' />
           </Button>
+
+          <OpenMenu color='transparent' />
 
           <Button className={classes.button} onClick={(e) => handleLogout(e)}>
             Logout

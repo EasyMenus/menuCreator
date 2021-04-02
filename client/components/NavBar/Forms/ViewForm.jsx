@@ -6,10 +6,11 @@ import { getMenu } from "../../../helper/getAllMenus";
 const ViewForm = (props) => {
   let { id } = useParams();
   const [keys, setKey] = useState({});
-  const [values, setValues] = useState([]);
-  console.log(useParams());
-  // console.log("id", id);
-  // let items = "";
+  const [values, setValues] = useState([])
+  // console.log(useParams());
+  console.log("id", id);
+  console.log(location.pathname)
+  console.log(location.href)
   // console.log('history', props.location);
   // console.log(props.history.location.state)
   // console.log('topicId', id);

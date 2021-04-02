@@ -8,10 +8,9 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import Typography from "@material-ui/core/Typography";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import { lighten, darken, makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { newSession } from "../../helper/authentication";
-import { green } from "@material-ui/core/colors";
 import "./SignIn.css";
 import { MenuContext } from '../../providers/MenuContext'
 
@@ -31,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: green[600],
-    color: green[100],
-    border: '1px solid green',
+    backgroundColor: '#dbe2ef',
+    color: lighten('#3f72af',0.3),
+    border: "1px solid #112d4e",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -41,9 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: "green",
+    backgroundColor: '#3f72af',
     '&:hover': {
-      backgroundColor: lighten('#008000', 0.33), 
+      backgroundColor: darken('#3f72af', 0.33), 
     },
   },
 }));

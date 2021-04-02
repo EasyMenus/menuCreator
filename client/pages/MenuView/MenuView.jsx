@@ -1,17 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import "./MenuCreator.css";
+import "./MenuView.css";
 import Header from "../Header/Header";
 import { MenuContext } from "../../providers/MenuContext";
-import { history } from "../../App.jsx";
-import NavBar from "./../NavBar/NavBar";
 
-const MenuCreator = () => {
-  // history.push('/');
-  // history.goBack();
-  // console.log('history', history)
-
-  // global state + context_API
-  const { menuHandler, menuName, menuNameHandler, foodItems, email } = useContext(
+const MenuView = () => {
+  const { menuHandler, menuName, menuNameHandler, foodItems, email, currentMenu } = useContext(
     MenuContext
   );
   const { headers, setHeaders } = useContext(MenuContext);
@@ -53,12 +46,11 @@ const MenuCreator = () => {
     // body.email = email
     body = JSON.stringify(body)
      console.log(body)
-   fetch(`${devServer}/menus/saveMenu`, {
+   fetch(`${devServer}/menus/menuID/${currentMenu}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: body,
     })
       .then((res) => res.json())
       .then((data) => {
@@ -72,7 +64,6 @@ const MenuCreator = () => {
   if (!menuCreated || menuName.length == 0) {
     return (
        <div>
-         <NavBar/>
         <div className='menu-name'>
           <label htmlFor='form-control' className='form-label'>
             Menu Name
@@ -135,4 +126,4 @@ const MenuCreator = () => {
   );
 };
 
-export default MenuCreator;
+export default MenuView;

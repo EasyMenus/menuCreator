@@ -48,17 +48,16 @@ const App = () => {
   return (
     <div>
       <Router history={history}>
-          { state ? <Route path="/" component={NavBar} /> : '' }
+          { state ? <Route path="/landing" component={NavBar} /> : '' }
           {/* <Route path="/" component={NavBar} /> */}
         <Switch>
           {/* <Route exact path="/" component={NavBar}/> */}
-          <Route exact path="/landing" component={SignIn} />
+          <Route exact path="/" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/menu" component={MenuCreator} />
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/userMenu/view/:id" component={ViewForm}/>
-          <Route exact path="/userMenu/edit/:id" component={EditForm}/>
-          <Route exact path="/userMenu/qr/:id" component={QR}/>
+          <Route exact path="/landing" component={LandingPage} />
+          <Route exact path="/menus/menuID/:id" component={ViewForm}/>
+          {/* <Route exact path="/userMenu/edit/:id" component={EditForm}/> */}
         </Switch>
       </Router>
     </div>

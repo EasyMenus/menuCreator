@@ -5,11 +5,12 @@ export const MenuContext = React.createContext({});
 
 const MenuProviders = ({ children }) => {
   const [menu, setMenu] = useState({});
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(window.localStorage.getItem("email") || '');
   const [menuName, setMenuName] = useState('')
   const [headers, setHeaders] = useState([]);
   const [foodItems, setFoodItems] = useState([]);
-  const [menuCache, setMenuCache] = useState({});
+  const [menuCache, setMenuCache] = useState([]);
+  const [currentMenu, setCurrentMenu] = useState(0);
 
   // final menu obj
   const menuHandler = () => {
@@ -34,6 +35,7 @@ const MenuProviders = ({ children }) => {
         headers, setHeaders, 
         foodItems, setFoodItems,
         menuCache, setMenuCache,
+        currentMenu, setCurrentMenu,
       }}
     >
       {children}
