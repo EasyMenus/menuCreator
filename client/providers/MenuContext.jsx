@@ -11,6 +11,7 @@ const MenuProviders = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [menuCache, setMenuCache] = useState([]);
   const [currentMenu, setCurrentMenu] = useState(0);
+  const [currentMenuData, setCurrentMenuData] = useState({})
 
   // final menu obj
   const menuHandler = () => {
@@ -36,6 +37,7 @@ const MenuProviders = ({ children }) => {
         foodItems, setFoodItems,
         menuCache, setMenuCache,
         currentMenu, setCurrentMenu,
+        currentMenuData, setCurrentMenuData,
       }}
     >
       {children}

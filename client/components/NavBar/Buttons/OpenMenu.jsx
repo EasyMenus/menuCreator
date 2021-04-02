@@ -33,10 +33,11 @@ function MenuDialog(props) {
   const [state, setState] = useState("");
   const classes = useStyles();
   const { onClose, open, menus } = props;
-  const { menuCache, setCurrentMenu, currentMenu } = useContext(MenuContext);
+  const { menuCache, setCurrentMenu, currentMenu, setCurrentMenuData } = useContext(MenuContext);
 
   const handleClose = (id) => {
     console.log(id)
+    setCurrentMenuData({})
     setCurrentMenu(id)
     onClose();
   };
@@ -91,7 +92,7 @@ function MenuDialog(props) {
      
 
               <Link
-                to={`/menus/menuID/${menuObj._id}`}
+                to={`/menus/menuID/qr/${menuObj._id}`}
                 onClick={() => handleClose(menuObj._id)}
                 className={classes.button}
               >
